@@ -1,0 +1,10 @@
+{
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.24",
+        "picqer/php-barcode-generator": "^2.2",
+        "mpdf/mpdf": "^8.1",
+        "guzzlehttp/guzzle": "^7.0",
+        "sgoettsch/monolog-rotating-file-handler": "^2.0",
+        "monolog/monolog": "^2.9"
+    }
+}

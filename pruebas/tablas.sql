@@ -1,0 +1,30 @@
+-- wmad.pedexcab definition
+
+CREATE TABLE `pedexcab` (
+  `pedcod` int(12) NOT NULL AUTO_INCREMENT,
+  `pedexref` varchar(15) NOT NULL,
+  `pedexentre` varchar(15) NOT NULL,
+  `clirefer` varchar(12) NOT NULL,
+  `pedclase` varchar(4) NOT NULL,
+  `almrefer` varchar(11) NOT NULL,
+  `pedexfec` date NOT NULL,
+  `pedexfeclle` date NOT NULL,
+  `pedexhor` time NOT NULL,
+  `pedexhorlle` time NOT NULL,
+  `siturefe` varchar(10) NOT NULL,
+  `pedexcie` time NOT NULL,
+  `pedexhorcie` date NOT NULL,
+  `pedexrack` varchar(12) NOT NULL,
+  `pedexce` int(2) NOT NULL,
+  `codenv` varchar(255) DEFAULT NULL,
+  `pedsent` int(11) DEFAULT '0',
+  `ensal` varchar(10) DEFAULT NULL,
+  `movref` varchar(255) DEFAULT NULL,
+  `obse1` varchar(255) DEFAULT NULL,
+  `codirec` varchar(255) DEFAULT NULL,
+  `puestoexp` varchar(4) DEFAULT NULL,
+  PRIMARY KEY (`pedcod`) USING BTREE,
+  KEY `idx_pedexentre` (`pedexentre`) USING BTREE,
+  KEY `idx_ped_ensal_mov` (`pedexentre`,`ensal`,`movref`) USING BTREE,
+  KEY `idx_clientes` (`clirefer`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;

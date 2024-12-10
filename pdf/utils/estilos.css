@@ -1,0 +1,10 @@
+
+@page {
+  size: auto;
+  margin-top: 1cm;
+  header: html_myHeader1;
+  footer: html_myFooter1;
+  margin-header: 1cm;
+  margin-footer: 10mm;
+}
+

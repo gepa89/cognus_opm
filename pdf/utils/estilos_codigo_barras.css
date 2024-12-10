@@ -1,0 +1,12 @@
+.centered {
+  text-align: center;
+}
+.row:after {
+  display: table;
+  clear: both;
+}
+
+.col-50 {
+  float: left;
+  width: 50%;
+}

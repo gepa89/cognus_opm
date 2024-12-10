@@ -1,0 +1,32 @@
+.dt-body-center {
+    text-align: center;
+    align-items: center;
+    vertical-align: middle !important;
+}
+
+.details-open {
+    background: url('../details_open.png') no-repeat center center;
+  }
+
+  .details-close {
+    background: url('../details_close.png') no-repeat center center;
+  }
+
+.btn-fnt-size {
+    font-size: 9px !important;
+    padding: 2px !important;
+}
+
+
+
+.details-control{
+    width: 20px;
+}
+
+tr.shown td .details-control {
+    background: url('details_close.png') no-repeat center center;
+}
+
+.label {
+    color: #000;
+}

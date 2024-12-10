@@ -1,0 +1,288 @@
+
+**** Log file opened at 2024-08-23 15:01:58.484020 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 661044
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 15:01:58.484034 [135861492504960] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 15:01:58.483742 [135861492504960] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:43:07.455966 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666100
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:43:07.455976 [135343346694528] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:43:07.455752 [135343346694528] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:44:56.131169 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666164
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:44:56.131180 [140018422036864] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:44:56.130742 [140018422036864] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:47:11.513369 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666300
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:47:11.513384 [137650976852352] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:47:11.513148 [137650976852352] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:48:00.310083 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666301
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:48:00.310094 [130136332278144] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:48:00.309679 [130136332278144] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:48:15.783000 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666365
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:48:15.783009 [127525576640896] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:48:15.782779 [127525576640896] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:48:23.520594 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666366
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:48:23.520604 [124836919400832] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:48:23.520382 [124836919400832] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:50:47.842733 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666467
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:50:47.842753 [128619127998848] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:50:47.842516 [128619127998848] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:51:15.286818 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666504
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:51:15.286828 [134276467829120] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:51:15.286584 [134276467829120] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:54:33.103652 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666667
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:54:33.103662 [128685267167616] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:54:33.103432 [128685267167616] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 16:56:04.314061 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 666766
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 16:56:04.314071 [136581905574272] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 16:56:04.313851 [136581905574272] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.
+
+**** Log file opened at 2024-08-23 17:13:32.806907 UTC+00:00 (GMT), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 11
+Compilation date          : Jan 14 2023 00:21:14
+CPIC library              : 753.2022.12.23 version 3
+NI library                : 40
+Kernel Release            : 753 Patch Level 1115
+Current working directory : /var/www/html/wmsd/jobs
+Program                   : php
+Process ID                : 667596
+User                      : root
+Hardware                  : AMD/Intel x86_64 with Linux x86_64
+Operating_system          : Linux 6.8.0-40-generic
+Hostname                  : ce94a9747b16
+IP address                : 172.19.0.2
+IPv6 address              : 
+Global trace level        : 0
+
+2024-08-23 17:13:32.806917 [139903805790592] >> Error entry
+	The UUID daemon (uuidd) is not active.
+Please ask your system administrator to activate uuidd according to SAP note 1391070.
+
+2024-08-23 17:13:32.806692 [139903805790592] >> Info entry
+	Did not find config file /var/www/html/wmsd/jobs/sapnwrfc.ini.

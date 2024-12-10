@@ -1,0 +1,637 @@
+2024-08-13 16:04:07 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:07 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:09 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:09 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:09 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:09 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:09 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:09 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:09 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:09 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:10 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:10 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:10 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:10 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:10 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:10 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:10 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:10 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:11 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:11 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:11 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:11 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:11 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:11 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:11 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:11 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:11 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:11 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:12 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:13 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:14 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:14 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:15 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:15 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:15 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:15 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:15 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "60.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:15 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-13 16:04:22 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "5.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300110A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:04:22 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": true
+} 
+2024-08-13 16:27:46 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "40.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300120A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:27:46 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": true
+} 
+2024-08-13 16:41:58 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "5.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300130A",
+    "cod_almacen": "CD11"
+} 
+2024-08-13 16:41:58 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 10:50:10 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 10:52:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 10:54:04 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 10:54:41 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 11:19:55 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "1",
+    "cantidad_a_ubicar": "200.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300120A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:19:55 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 11:20:44 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "2",
+    "cantidad_a_ubicar": "100.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300130A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:20:44 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": true
+} 
+2024-08-14 11:21:02 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "2",
+    "cantidad_a_ubicar": "150.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:21:02 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-14 11:21:03 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "2",
+    "cantidad_a_ubicar": "150.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:21:03 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "Cantidad a ubicar no valido"
+} 
+2024-08-14 11:21:05 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "2",
+    "cantidad_a_ubicar": "100.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:21:06 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 11:21:47 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000019",
+    "codigo_pedido": "3",
+    "cantidad_a_ubicar": "100.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300150A",
+    "cod_almacen": "CD11"
+} 
+2024-08-14 11:21:47 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 16:08:28 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 16:09:12 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-14 16:10:21 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 08:54:42 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 08:56:19 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 08:57:16 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 08:58:17 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 08:59:56 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquistaRecepcion.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 09:07:06 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "6",
+    "cantidad_a_ubicar": "200.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300120A",
+    "cod_almacen": "CD11"
+} 
+2024-08-19 09:07:07 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 09:07:49 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000019",
+    "codigo_pedido": "7",
+    "cantidad_a_ubicar": "200.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300130A",
+    "cod_almacen": "CD11"
+} 
+2024-08-19 09:07:49 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-19 09:08:32 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000020",
+    "codigo_pedido": "8",
+    "cantidad_a_ubicar": "100.0",
+    "muelle": "R00100210A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-19 09:08:33 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-21 08:44:29 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "9",
+    "cantidad_a_ubicar": "200.0",
+    "muelle": "R00100110A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-21 08:44:30 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-21 10:15:43 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "10",
+    "cantidad_a_ubicar": "200.0",
+    "muelle": "R00100510A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300150A",
+    "cod_almacen": "CD11"
+} 
+2024-08-21 10:15:44 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-21 11:14:42 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "16",
+    "cantidad_a_ubicar": "160.0",
+    "muelle": "R00100310A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300220A",
+    "cod_almacen": "CD11"
+} 
+2024-08-21 11:14:43 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-21 11:42:06 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000018",
+    "codigo_pedido": "17",
+    "cantidad_a_ubicar": "100.0",
+    "muelle": "R00100310A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300140A",
+    "cod_almacen": "CD11"
+} 
+2024-08-21 11:42:06 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
+2024-08-21 11:43:22 - entrada - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "codigo_articulo": "000000000009005409",
+    "posicion": "1",
+    "multireferencia": "3270000022",
+    "codigo_pedido": "18",
+    "cantidad_a_ubicar": "70.0",
+    "muelle": "R00100310A",
+    "usuario": "GUDA",
+    "ubicacion_ref": "000300230A",
+    "cod_almacen": "CD11"
+} 
+2024-08-21 11:43:22 - salida - /var/www/html/wmsd/api/guardarUbicacionMaquista.php - {
+    "mensaje": "exito",
+    "recargar_rutas": false
+} 
