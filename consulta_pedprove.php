@@ -881,6 +881,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         });
       }
     }
+
+    let pedidoATratar = null;
     // Maneja los clics en los botones del dropdown dinámico
     $(document).on('click', '.dropdown-menu li a', function (event) {
       event.preventDefault(); // Evita el comportamiento por defecto del enlace
@@ -937,7 +939,11 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     window.addData = function (docompra) {
       console.log(`Agregando container data para ${docompra}`);
 
-      pedidoATratar = pedido;
+      pedidoATratar = docompra;
+
+      $("#addDat .modal-title").empty().append('Añadir ');
+      $('#addDat').modal('show');
+      $('#addDat input[name="addDoc"]').val(docompra);
       // Lógica aquí
     };
 
@@ -959,7 +965,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       // Lógica aquí
     };
     document.addEventListener('DOMContentLoaded', function () {
-      let pedidoATratar = null;
 
       // Inicializar el componente de jspreadsheet
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
