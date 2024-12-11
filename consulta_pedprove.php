@@ -785,7 +785,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               let anularButton = `<li><a style="margin:0;padding:0" data-action="anularPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Anular</a></li>`;
               let cerrarButton = `<li><a style="margin:0;padding:0" data-action="cerrarPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Cerrar</a></li>`;
               let solicitaApro = `<li><a style="margin:0;padding:0" data-action="solicitarAprobacion" data-docompra="${row.docompra}" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
-              let addcontaine = `<li><a style="margin:0;padding:0" data-action="addDat" data-docompra="${row.docompra}" href="javascript:void(0);">Add Container Data</a></li>`;
+              let addcontaine = `<li><a style="margin:0;padding:0" data-action="addData" data-docompra="${row.docompra}" href="javascript:void(0);">Add Container Data</a></li>`;
               let editcontaine = `<li><a style="margin:0;padding:0" data-action="updUsr" data-docompra="${row.docompra}" href="javascript:void(0);">Edit Container Data</a></li>`;
               let adjuntardocu = `<li><a style="margin:0;padding:0" data-action="adjuntardoc" data-docompra="${row.docompra}" href="javascript:void(0);">Adjuntar Documento</a></li>`;
               let modPedido = `<li><a style="margin:0;padding:0" data-action="modificarPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Modificar Pedido</a></li>`;
@@ -903,32 +903,55 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.anularPedido = function (docompra) {
       console.log(`Anulando pedido para ${docompra}`);
-      // Lógica aquí
+      
+      let url = "/api/v1/anular_pedprove.php?docompra=" + docompra;
+      let contenido = $("#anular-pedido").html();
+      contenido = contenido.replace('__pedido__', docompra);
+      contenido = contenido.replace('__url__', url);
+
+      generarModal(`Anular Descarga ${docompra}`, contenido);
     };
 
     window.cerrarPedido = function (docompra) {
       console.log(`Cerrando pedido para ${docompra}`);
-      // Lógica aquí
+      
+      let url = "/api/v1/cerrar_pedprove.php?docompra" + docompra;
+      let contenido = $("#cerrar-pedido").html();
+      contenido = contenido.replace('__pedido__', docompra);
+      contenido = contenido.replace('__url__', url);
+
+      generarModal(`Cerrar Descarga ${docompra}`, contenido);
     };
 
     window.solicitarAprobacion = function (docompra) {
       console.log(`Solicitando aprobación para ${docompra}`);
-      // Lógica aquí
+      
+      let url = "/api/v1/guardar_solicitud_aprobacion.php?docompra=" + docompra;
+      let contenido = $("#form-solicitar-aprobacion").html();
+      contenido = contenido.replace('__pedido__', docompra);
+      contenido = contenido.replace('__url__', url);
+
+      generarModal(`Programar Descarga ${docompra}`, contenido);
     };
 
-    window.addDat = function (docompra) {
+    window.addData = function (docompra) {
       console.log(`Agregando container data para ${docompra}`);
+
+      pedidoATratar = pedido;
       // Lógica aquí
     };
 
-    window.updUsr = function (docompra) {
+    window.updUsr = function (addPue, addDes) {
       console.log(`Editando container data para ${docompra}`);
-      // Lógica aquí
+      
+      $("#editUsr .modal-title").empty().append('Editar ');
+      $("#updPue").val(addPue);
+      $("#updDes").val(addDes);
+      $('#editUsr').modal('show');
     };
 
     window.adjuntardoc = function (docompra) {
       console.log(`Adjuntando documento para ${docompra}`);
-      // Lógica aquí
     };
 
     window.modificarPedido = function (docompra) {
@@ -937,11 +960,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     };
     document.addEventListener('DOMContentLoaded', function () {
       let pedidoATratar = null;
-
-      // Función para asignar el pedido a tratar
-      function addDat(pedido) {
-        pedidoATratar = pedido;
-      }
 
       // Inicializar el componente de jspreadsheet
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
@@ -1246,18 +1264,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
       xhr.send(formData);
     }
-    function adjuntardoc(docCompra) {
-      // Llamar a la función para abrir el modal y pasar el docCompra
-      openModal(docCompra);
-    }
-    function solicitarAprobacion(docompra) {
-      let url = "/api/v1/guardar_solicitud_aprobacion.php?docompra=" + docompra;
-      let contenido = $("#form-solicitar-aprobacion").html();
-      contenido = contenido.replace('__pedido__', docompra);
-      contenido = contenido.replace('__url__', url);
-
-      generarModal(`Programar Descarga ${docompra}`, contenido);
-    }
     function addDat(docompra) {
       $("#addDat .modal-title").empty().append('Añadir ');
       $('#addDat').modal('show');
@@ -1267,10 +1273,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       $("#editUsr .modal-title").empty().append('Editar ');
       $("#updPue").val(addPue);
       $("#updDes").val(addDes);
-
-
-      //                $("#updAlm").val(addAlm).change();
-
       $('#editUsr').modal('show');
     }
     function saveAdd() {
@@ -1302,12 +1304,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     }
 
     function solicitadc(pedido) {
-      let url = "/api/v1/mod_pedprove_contenedor.php?pedido=" + pedido;
-      let contenido = $("#form-solicitar-contenedor").html();
-      contenido = contenido.replace('__pedido__', pedido);
-      contenido = contenido.replace('__url__', url);
-
-      generarModal(`Programar Descarga ${pedido}`, contenido);
     }
 
     function anularPedido(docompra) {
@@ -1320,12 +1316,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     }
 
     function cerrarPedido(docompra) {
-      let url = "/api/v1/cerrar_pedprove.php?docompra" + docompra;
-      let contenido = $("#cerrar-pedido").html();
-      contenido = contenido.replace('__pedido__', docompra);
-      contenido = contenido.replace('__url__', url);
-
-      generarModal(`Cerrar Descarga ${docompra}`, contenido);
     }
 
     async function asReception(ped, almacen) {
