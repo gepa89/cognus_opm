@@ -877,6 +877,14 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       }
     }
     document.addEventListener('DOMContentLoaded', function () {
+      let pedidoATratar = null;
+
+      // Función para asignar el pedido a tratar
+      function addDat(pedido) {
+        pedidoATratar = pedido;
+      }
+
+      // Inicializar el componente de jspreadsheet
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
         data: [],
         columns: [
@@ -892,13 +900,18 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         allowDeleteColumn: true
       });
 
-      // Función para capturar y guardar los datos cargados en el jspreadsheet
+      // Función para guardar los datos del jspreadsheet
       window.saveConte = function () {
         debugger;
         if (typeof spreadsheet !== 'undefined' && typeof spreadsheet.getData === 'function') {
           // Obtener los datos del spreadsheet
           const data = spreadsheet.getData();
-          let Doc = row.docompra;  
+
+          // Validar que haya un pedido asignado
+          if (!pedidoATratar) {
+            alert('No se ha seleccionado un pedido.');
+            return;
+          }
 
           // Filtrar las filas que tengan todos los campos llenos
           const filteredData = data.filter(row => row.every(cell => cell !== null && cell !== ''));
@@ -911,10 +924,10 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
           // Crear un array estructurado para enviar al servidor
           const structuredData = filteredData.map(row => ({
-            docompra: Doc,
+            docompra: pedidoATratar,
             tipconte: row[0],
-            numconte: row[1],
-            canti: row[2],
+            canti: row[1],
+            numconte: row[2],
             observacion: row[3]
           }));
 
@@ -955,10 +968,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         }
       };
     });
-
-
-
-
     /* function saveConte() {
           var Doc = $("#addDoc").val();  
           var Tco = $("#addTco").val();
