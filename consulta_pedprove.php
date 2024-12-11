@@ -895,6 +895,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
       // Función para capturar y guardar los datos cargados en el jspreadsheet
       window.saveConte = function () {
+        debugger;
         if (typeof spreadsheet !== 'undefined' && typeof spreadsheet.getData === 'function') {
           // Obtener los datos del spreadsheet
           const data = spreadsheet.getData();
