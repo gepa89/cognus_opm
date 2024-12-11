@@ -877,7 +877,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       }
     }
     document.addEventListener('DOMContentLoaded', function () {
-      // Inicializar el jspreadsheet
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
         data: [],
         columns: [
@@ -900,22 +899,23 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           // Obtener los datos del spreadsheet
           const data = spreadsheet.getData();
 
+          // Filtrar las filas que tengan todos los campos llenos
+          const filteredData = data.filter(row => row.every(cell => cell !== null && cell !== ''));
+
           // Validar que no esté vacío
-          if (data.length === 0) {
-            alert('No hay datos en el spreadsheet para guardar.');
+          if (filteredData.length === 0) {
+            alert('No hay filas completas en el spreadsheet para guardar.');
             return;
           }
 
           // Crear un array estructurado para enviar al servidor
-          const structuredData = data.map((row, index) => {
-            return {
-              docompra: row[0] || '', // Validar cada campo y asignar un valor predeterminado
-              tipconte: row[1] || '',
-              numconte: row[2] || '',
-              canti: row[3] || '',
-              observacion: row[4] || ''
-            };
-          });
+          const structuredData = filteredData.map(row => ({
+            docompra: row[0],
+            tipconte: row[1],
+            numconte: row[2],
+            canti: row[3],
+            observacion: row[4]
+          }));
 
           // Enviar los datos al servidor
           fetch('requests/saveDatConte.php', {
@@ -937,10 +937,12 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               return response.json();
             })
             .then(result => {
-              // Mostrar mensaje del servidor
-              alert(result.msg);
-              if (result.err === 0) {
+              // Validar la respuesta del servidor
+              if (result && result.err === 0) {
+                alert(result.msg);
                 window.location = 'consulta_pedprove.php'; // Redirigir si el guardado fue exitoso
+              } else {
+                alert(result.msg || 'Error desconocido en el servidor');
               }
             })
             .catch(error => {
@@ -952,6 +954,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         }
       };
     });
+
 
 
 
