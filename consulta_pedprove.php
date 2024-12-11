@@ -20,13 +20,12 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 <body class="full_width">
   <style>
     #tblReg_filter {
-            display: none;
-        }
+      display: none;
+    }
 
-        #tblReg tbody tr td:first-of-type {
-            width: 100px;
-        }
-
+    #tblReg tbody tr td:first-of-type {
+      width: 100px;
+    }
   </style>
   <div id="maincontainer" class="clearfix">
     <?php include 'header.php' ?>
@@ -70,21 +69,23 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="buscar">Fecha Desde:</label>
-                      <input class="form-control" id="fecha_desde" value="<?php echo $hoy; ?>" name="fecha_desde" type="date">
+                      <input class="form-control" id="fecha_desde" value="<?php echo $hoy; ?>" name="fecha_desde"
+                        type="date">
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="buscar">Fecha Hasta:</label>
-                      <input class="form-control" id="fecha_hasta" value="<?php echo $hoy; ?>" name="fecha_hasta" type="date">
+                      <input class="form-control" id="fecha_hasta" value="<?php echo $hoy; ?>" name="fecha_hasta"
+                        type="date">
                     </div>
                   </div>
-                  
-                 
+
+
 
                 </div>
                 <div class="row">
-                 
+
                   <div class="col-md-2">
                     <div class="form-group">
                       <label>Situación:</label>
@@ -114,61 +115,63 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           </form>
         </div>
         <div class="modal fade bd-example-modal-lg" id="addUsr" tabindex="-1" role="dialog"
-        aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body">
-              <form method="post" id="eForm">
-                <div class="row">
-                   <div class="col-sm-2">
-                    <div class="form-group">
-                      <label for="buscar">Order</label>
-                      <input type="text" id="addPed" name="addPed" disabled="true" class="form-control"
-                        placeholder="" value="" />
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+              </div>
+              <div class="modal-body">
+                <form method="post" id="eForm">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label for="buscar">Order</label>
+                        <input type="text" id="addPed" name="addPed" disabled="true" class="form-control" placeholder=""
+                          value="" />
+                      </div>
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label for="buscar">Proveedor</label>
+                        <input type="text" id="addPro" name="addPro" disabled="true" class="form-control" placeholder=""
+                          value="" />
+                      </div>
                     </div>
                   </div>
-                   <div class="col-sm-8">
-                    <div class="form-group">
-                      <label for="buscar">Proveedor</label>
-                      <input type="text" id="addPro" name="addPro" disabled="true" class="form-control"
-                        placeholder="" value="" />
-                    </div>
-                  </div> 
-                  </div> 
                   <div class="row">
-                     <div class="col-sm-8">
-                        <div class="form-group">
-                          <label for="buscar">Observation</label>
-                   
-                          <textarea id="addObs" name="addObs" class="form-control" maxlength="250" rows="4" cols="50"></textarea>
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label for="buscar">Observation</label>
 
+                        <textarea id="addObs" name="addObs" class="form-control" maxlength="250" rows="4"
+                          cols="50"></textarea>
+
+                      </div>
+                    </div>
+
+                    <div style="clear:both;"></div><br /><br />
+
+                    <div style="clear:both;"></div><br /><br />
+                    <div class="col-lg4 col-sm-4">
+                      <div class="input-group">
+                        <div class="input-group">
+                          <button type="button" onclick="saveAdd()"
+                            class="form-control btn btn-primary">Guardar</button>
                         </div>
                       </div>
-                 
-                  <div style="clear:both;"></div><br /><br />
-
-                  <div style="clear:both;"></div><br /><br />
-                  <div class="col-lg4 col-sm-4">
-                    <div class="input-group">
-                      <div class="input-group">
-                        <button type="button" onclick="saveAdd()" class="form-control btn btn-primary">Guardar</button>
-                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
-              <div style="clear:both;"></div>
+                </form>
+                <div style="clear:both;"></div>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
-      </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="col-md-4"></div>
@@ -180,11 +183,13 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           </div>
         </div>
         <div class="row">
-          <table class="table table-hover table-striped table-bordered  table-condensed" style="width: 100% !important;" id="tblReg">
+          <table class="table table-hover table-striped table-bordered  table-condensed" style="width: 100% !important;"
+            id="tblReg">
           </table>
         </div>
         <!-- Modal -->
-        <div class="modal fade bd-example-modal-sm" id="assignRec" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm" id="assignRec" tabindex="-1" role="dialog"
+          aria-labelledby="mySmallModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-sm">
 
             <!-- Modal content-->
@@ -228,38 +233,39 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     </div>
   </div>
   <div class="modal fade bd-example-modal-md" id="editUsr" tabindex="-1" role="dialog"
-     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Detalle de Usuario</h4>
-            </div>
-            <div class="modal-body">
-                <!-- Tabla dentro del modal -->
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Order</th>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Observation</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpo_tabla">
-
-                        </tbody>
-                </table>
-                <!-- Botón para cerrar o realizar una acción adicional -->
-                <div class="form-group text-center">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detalle de Usuario</h4>
         </div>
+        <div class="modal-body">
+          <!-- Tabla dentro del modal -->
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Date</th>
+                <th>User</th>
+                <th>Observation</th>
+              </tr>
+            </thead>
+            <tbody id="cuerpo_tabla">
+
+            </tbody>
+          </table>
+          <!-- Botón para cerrar o realizar una acción adicional -->
+          <div class="form-group text-center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-  <div class="modal fade bd-example-modal-lg" id="modal_sin_ubicacion" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  </div>
+  <div class="modal fade bd-example-modal-lg" id="modal_sin_ubicacion" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
@@ -290,79 +296,79 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
   </div>
   <div id="fileModal" class="modal" style="display:none;">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Adjuntar Documento</h2>
-        
-        <!-- Formulario para seleccionar el archivo -->
-        <form id="uploadForm">
-            <input type="file" name="documents" id="documents" multiple>
-            <br><br>
-            <button type="button" onclick="uploadDocuments()">Subir Archivos</button>
-        </form>
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Adjuntar Documento</h2>
+
+      <!-- Formulario para seleccionar el archivo -->
+      <form id="uploadForm">
+        <input type="file" name="documents" id="documents" multiple>
+        <br><br>
+        <button type="button" onclick="uploadDocuments()">Subir Archivos</button>
+      </form>
     </div>
-</div>
+  </div>
   <div class="modal fade bd-example-modal-lg" id="modalData" tabindex="-1" role="dialog">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    
-                                    <div class="modal-body" style="overflow-x:auto;">
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <!--<button type="button" onclick="clsDetail()" id="btnClsPk" class="btn btn-default"><i class="icon-adt_trash"></i></button>-->
-                                        <!--<button type="button" disabled="disabled" id="btnPk" onclick="btnVlnSv()" class="btn btn-primary">Guardar</button>-->
-                                        <!--                                <button type="button" disabled="disabled" id="btnPk" onclick="btnVlnPk()" class="btn btn-primary">Picking</button>
-                                                <button type="button" disabled="disabled" id="btnAnl" onclick="btnVlnAnl()" class="btn btn-warning">Anulación</button>-->
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-success" onclick="addUsr()">Add observation</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-   <div class="modal fade bd-example-modal-lg" id="addDat" tabindex="-1" role="dialog"
-        aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Contenedor</h4>
-            </div>
-            <div class="modal-body">
-                <form method="post" id="eForm">
-                    <div id="spreadsheet"></div>
-                     <div class="row">
-                
-                        <div class="col-sm-3">
-                          <div class="form-group">
-                            <label for="proveedor">Nro.Pedido:</label>
-                            <input id="pedgen" disabled name="pedgen" class="form-control">
-                          </div>
-                        </div>
-                    <div style="clear:both;"></div><br /><br />
-                    <div class="col-lg4 col-sm-4">
-                        <div class="input-group">
-                            <div class="input-group">
-                                <button type="button" onclick="saveConte()" class="form-control btn btn-primary">Guardar</button>
-                            </div>
-                        </div>
-                    </div>   
-               
-              </div>
-                    
-                    
-                </form>
-            </div>
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+
+        <div class="modal-body" style="overflow-x:auto;">
+        </div>
+
+        <div class="modal-footer">
+          <!--<button type="button" onclick="clsDetail()" id="btnClsPk" class="btn btn-default"><i class="icon-adt_trash"></i></button>-->
+          <!--<button type="button" disabled="disabled" id="btnPk" onclick="btnVlnSv()" class="btn btn-primary">Guardar</button>-->
+          <!--                                <button type="button" disabled="disabled" id="btnPk" onclick="btnVlnPk()" class="btn btn-primary">Picking</button>
+                                                <button type="button" disabled="disabled" id="btnAnl" onclick="btnVlnAnl()" class="btn btn-warning">Anulación</button>-->
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" onclick="addUsr()">Add observation</button>
+        </div>
+
+      </div>
     </div>
-</div>
+  </div>
+  <div class="modal fade bd-example-modal-lg" id="addDat" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Agregar Contenedor</h4>
+        </div>
+        <div class="modal-body">
+          <form method="post" id="eForm">
+            <div id="spreadsheet"></div>
+            <div class="row">
+
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="proveedor">Nro.Pedido:</label>
+                  <input id="pedgen" disabled name="pedgen" class="form-control">
+                </div>
+              </div>
+              <div style="clear:both;"></div><br /><br />
+              <div class="col-lg4 col-sm-4">
+                <div class="input-group">
+                  <div class="input-group">
+                    <button type="button" onclick="saveConte()" class="form-control btn btn-primary">Guardar</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="modal fade bd-example-modal-sm" id="modal-generico" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md">
 
@@ -473,12 +479,12 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     var table = null;
     var delay_function = null;
 
-    $(document).ready(function() {
-      $('#search').on('keyup', function() {
+    $(document).ready(function () {
+      $('#search').on('keyup', function () {
         if (delay_function !== null) {
           clearTimeout(delay_function);
         }
-        delay_function = setTimeout(function() {
+        delay_function = setTimeout(function () {
           table.search($('#search').val()).draw();
         }, 500);
       });
@@ -488,7 +494,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         enableFiltering: true,
         buttonWidth: '100%',
         enableCaseInsensitiveFiltering: true,
-        buttonText: function(options) {
+        buttonText: function (options) {
           if (options.length === 0) {
             return 'Ninguno';
           } else if (options.length > 0) {
@@ -502,7 +508,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         enableFiltering: true,
         buttonWidth: '100%',
         enableCaseInsensitiveFiltering: true,
-        buttonText: function(options) {
+        buttonText: function (options) {
           if (options.length === 0) {
             return 'Ninguno';
           } else if (options.length > 0) {
@@ -511,7 +517,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         }
       });
       datatable(null);
-      $('#tblReg tbody').on('click', '.details-control', function() {
+      $('#tblReg tbody').on('click', '.details-control', function () {
         var table = $("#tblReg").DataTable({
           'retrieve': true
         });
@@ -539,11 +545,11 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               pedido: rowx.docompra
             },
             dataType: 'json',
-            success: function(json) {
+            success: function (json) {
               $.LoadingOverlay("hide");
               generar_tabla_detalles(rowx.pedido, json.detalles, row);
             },
-            error: function(xhr, error, thrown) {
+            error: function (xhr, error, thrown) {
               $.LoadingOverlay("hide");
               console.log(xhr);
               console.log(error);
@@ -553,7 +559,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
         }
       });
-      $("#form_filtros").submit(function(e) {
+      $("#form_filtros").submit(function (e) {
         e.preventDefault();
         $.LoadingOverlay("show");
         datatable(obtenerURL());
@@ -563,7 +569,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     function submitFormGenerico() {
       event.preventDefault();
       let url = $("#form-generico").attr('action');
-      let ajaxData = $("#form-generico").serializeArray().reduce(function(obj, item) {
+      let ajaxData = $("#form-generico").serializeArray().reduce(function (obj, item) {
         obj[item.name] = item.value;
         return obj;
       }, {});
@@ -574,7 +580,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         type: "POST",
         url: url,
         data: ajaxData,
-        success: function(response) {
+        success: function (response) {
           $("#modal-generico").modal("hide");
           if (response.exito) {
             datatable(obtenerURL());
@@ -593,12 +599,12 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           }
 
         },
-        error: function(xhr, error, thrown) {
+        error: function (xhr, error, thrown) {
           console.log(xhr);
           console.log(error);
           console.log(thrown);
         },
-        complete: function() {
+        complete: function () {
           $(".btn-submit").prop('disabled', false);
           $("#loading-button").hide();
         }
@@ -606,14 +612,14 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       return false;
     }
 
-    function addUsr(docompra,nombre) {
-        
+    function addUsr(docompra, nombre) {
+
       $("#addUsr .modal-title").empty().append('Añadir ');
       $('#modalData').modal('hide');
-      
+
       $('#addUsr').modal('show');
-      $('#addUsr input[name="addPed"]').val(docompra); 
-      $('#addUsr input[name="addPro"]').val(nombre); 
+      $('#addUsr input[name="addPed"]').val(docompra);
+      $('#addUsr input[name="addPro"]').val(nombre);
     }
     function obtenerURL() {
       let url = '/api/v1/obtener_pedprove.php?';
@@ -621,7 +627,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       url += `proveedor=${$("#proveedor").val()}&`;
       url += `fecha_desde=${$("#fecha_desde").val()}&`;
       url += `fecha_hasta=${$("#fecha_hasta").val()}&`;
-    
+
       url += `clase_documento=${$("#clase_documento").val() ?? ""}&`;
       url += `situacion=${$("#situacion").val() ?? ""}&`;
       url += `almacen=${$("#codalma").val()}`;
@@ -632,50 +638,50 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       let cuerpo = ``;
       let fila = ``;
       let columna_detalles = [{
-          data: 'posnr',
-          title: 'Pos.',
-          className: 'dt-body-center'
-        }, {
-          data: 'artrefer',
-          title: 'Material',
-          className: 'dt-body-center'
-        }, {
-          data: 'artdesc',
-          title: 'Descripcion',
-          className: 'dt-body-center'
-        }, {
-          data: 'unimed',
-          title: 'UM',
-          className: 'dt-body-center'
-        }, {
-          data: 'canti',
-          title: 'Cant.Pedido',
-          className: 'dt-body-center'
-        }, {
-          data: 'preuni',
-          title: 'Precio',
-          className: 'dt-body-center'
-        },
-        {
-          data: 'pretotal',
-          title: 'Prec.Total',
-          className: 'dt-body-center'
-        },
-        {
-          data: 'cencod',
-          title: 'Centro',
-          className: 'dt-body-center'
-        },
-        {
-          data: 'cod_alma',
-          title: 'Almacen',
-          className: 'dt-body-center'
-        },
-        {
-          data: 'volumen',
-          title: 'Grup.Art.',
-          className: 'dt-body-center'
-        },
+        data: 'posnr',
+        title: 'Pos.',
+        className: 'dt-body-center'
+      }, {
+        data: 'artrefer',
+        title: 'Material',
+        className: 'dt-body-center'
+      }, {
+        data: 'artdesc',
+        title: 'Descripcion',
+        className: 'dt-body-center'
+      }, {
+        data: 'unimed',
+        title: 'UM',
+        className: 'dt-body-center'
+      }, {
+        data: 'canti',
+        title: 'Cant.Pedido',
+        className: 'dt-body-center'
+      }, {
+        data: 'preuni',
+        title: 'Precio',
+        className: 'dt-body-center'
+      },
+      {
+        data: 'pretotal',
+        title: 'Prec.Total',
+        className: 'dt-body-center'
+      },
+      {
+        data: 'cencod',
+        title: 'Centro',
+        className: 'dt-body-center'
+      },
+      {
+        data: 'cod_alma',
+        title: 'Almacen',
+        className: 'dt-body-center'
+      },
+      {
+        data: 'volumen',
+        title: 'Grup.Art.',
+        className: 'dt-body-center'
+      },
       ];
       row.child(`<table class="table table-bordered table-condensed" style="width:100%" id='tabla-${pedido}'></table>`).show();
       let detailTable = $(`#tabla-${pedido}`).DataTable({
@@ -703,11 +709,11 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           ajax: {
             type: "GET",
             url: obtenerURL(),
-            dataSrc: function(json) {
+            dataSrc: function (json) {
               $.LoadingOverlay("hide");
               return json.data;
             },
-            error: function(xhr, error, thrown) {
+            error: function (xhr, error, thrown) {
               $.LoadingOverlay("hide");
               console.log(xhr);
               console.log(error);
@@ -729,60 +735,60 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
             targets: 0
           }],
           columns: [{
-              className: 'details-control details-open',
-              orderable: false,
-              data: null,
-              defaultContent: ''
-            }, {
-              data: 'docompra',
-              title: "Pedido",
-              className: 'dt-body-center'
-            },
-            {
-              data: 'clasdoc',
-              title: "Clas.Doc.",
-              className: 'dt-body-center',
-            },
-            {
-              data: 'codsocie',
-              title: "Sociedad",
-              className: 'dt-body-center'
-            },
-            
-            {
-              data: 'nombre',
-              title: "Proveedor",
-              className: 'dt-body-center'
-            },
-            {
-              data: 'fecre',
-              title: "Fec.Pedido",
-              className: 'dt-body-center'
-            },
-            {
-              data: 'orgcompra',
-              title: "Org.Compra",
-              className: 'dt-body-center'
-            },
-            {
-              data: 'grupcompra',
-              title: "Grup.Compra.",
-              className: 'dt-body-center'
-            },
-            
-            {
-              title: "Acciones",
-              className: 'dt-body-center',
-              mRender: function(data, type, row) {
-                let progrButton = `<li><a style="margin:0;padding:0" onclick="solicitadc('${row.docompra}')" href="javascript:void(0);">Solicitar DC </a></li>`;
-                let anularButton = `<li><a style="margin:0;padding:0"  onclick="anularPedido('${row.docompra}')"  href="javascript:void(0);">Anular</a></li>`;
-                let cerrarButton = `<li><a style="margin:0;padding:0"  onclick="cerrarPedido('${row.docompra}')"  href="javascript:void(0);">Cerrar</a></li>`;
-                let solicitaApro = `<li><a style="margin:0;padding:0" onclick="solicitarAprobacion('${row.docompra}')" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
-                let addcontaine = `<li><a style="margin:0;padding:0" onclick="addDat('${row.docompra}')" href="javascript:void(0);">Add Container Data</a></li>`;
-                let editcontaine = `<li><a style="margin:0;padding:0" onclick="updUsr('${row.docompra}')" href="javascript:void(0);">Edit Container Data</a></li>`;
-                let adjuntardocu = `<li><a style="margin:0;padding:0" onclick="adjuntardoc('${row.docompra}')" href="javascript:void(0);">Adjuntar Documento</a></li>`;
-                let modPedido = `<li><a style="margin:0;padding:0"  target="_blank" href="mod_pedidos.php"  href="javascript:void(0);">Modificar Pedido</a></li>`;
-                let group = `<div class="btn-group">
+            className: 'details-control details-open',
+            orderable: false,
+            data: null,
+            defaultContent: ''
+          }, {
+            data: 'docompra',
+            title: "Pedido",
+            className: 'dt-body-center'
+          },
+          {
+            data: 'clasdoc',
+            title: "Clas.Doc.",
+            className: 'dt-body-center',
+          },
+          {
+            data: 'codsocie',
+            title: "Sociedad",
+            className: 'dt-body-center'
+          },
+
+          {
+            data: 'nombre',
+            title: "Proveedor",
+            className: 'dt-body-center'
+          },
+          {
+            data: 'fecre',
+            title: "Fec.Pedido",
+            className: 'dt-body-center'
+          },
+          {
+            data: 'orgcompra',
+            title: "Org.Compra",
+            className: 'dt-body-center'
+          },
+          {
+            data: 'grupcompra',
+            title: "Grup.Compra.",
+            className: 'dt-body-center'
+          },
+
+          {
+            title: "Acciones",
+            className: 'dt-body-center',
+            mRender: function (data, type, row) {
+              let progrButton = `<li><a style="margin:0;padding:0" onclick="solicitadc('${row.docompra}')" href="javascript:void(0);">Solicitar DC </a></li>`;
+              let anularButton = `<li><a style="margin:0;padding:0"  onclick="anularPedido('${row.docompra}')"  href="javascript:void(0);">Anular</a></li>`;
+              let cerrarButton = `<li><a style="margin:0;padding:0"  onclick="cerrarPedido('${row.docompra}')"  href="javascript:void(0);">Cerrar</a></li>`;
+              let solicitaApro = `<li><a style="margin:0;padding:0" onclick="solicitarAprobacion('${row.docompra}')" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
+              let addcontaine = `<li><a style="margin:0;padding:0" onclick="addDat('${row.docompra}')" href="javascript:void(0);">Add Container Data</a></li>`;
+              let editcontaine = `<li><a style="margin:0;padding:0" onclick="updUsr('${row.docompra}')" href="javascript:void(0);">Edit Container Data</a></li>`;
+              let adjuntardocu = `<li><a style="margin:0;padding:0" onclick="adjuntardoc('${row.docompra}')" href="javascript:void(0);">Adjuntar Documento</a></li>`;
+              let modPedido = `<li><a style="margin:0;padding:0"  target="_blank" href="mod_pedidos.php"  href="javascript:void(0);">Modificar Pedido</a></li>`;
+              let group = `<div class="btn-group">
                       <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Acciones <span class="caret"></span>
                       </button>
@@ -800,179 +806,191 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
                       </ul>
                     </div>`;
 
-                if (row.estado == "AN" || row.estado == "CE") {
-                  group = "";
-                }
-                return group;
+              if (row.estado == "AN" || row.estado == "CE") {
+                group = "";
               }
-            },
-            {
-              title: "Observacion",
-              className: 'dt-body-center',
-              mRender: function (data, type, row) {
+              return group;
+            }
+          },
+          {
+            title: "Observacion",
+            className: 'dt-body-center',
+            mRender: function (data, type, row) {
               let texto = `<a title="Add Observation">
                                             <span style="font-size:14px" onclick="addUsr('${row.docompra}','${row.nombre}')" class="glyphicon glyphicon-edit"></span></a>
                                          <a title="View Observation">
                                             <span style="font-size:14px" onclick="swModal('${row.docompra}')" class="glyphicon glyphicon-search"></span></a>`;
               return texto;
             }
-            },    
-            {
-              data: 'codmone',
-              title: "Moneda",
-              className: 'dt-body-center'
+          },
+          {
+            data: 'codmone',
+            title: "Moneda",
+            className: 'dt-body-center'
+          },
+          {
+            data: 'totalp',
+            title: '<span style="color: red;">Valor Pedido</span>',
+            className: 'dt-body-center',
+            render: function (data, type, row) {
+              // Modifica el valor de la celda para que se muestre en rojo
+              return '<span style="color: red;">' + data + '</span>';
             },
-            {
-              data: 'totalp',
-              title: '<span style="color: red;">Valor Pedido</span>',
-              className: 'dt-body-center',
-              render: function(data, type, row) {
-                // Modifica el valor de la celda para que se muestre en rojo
-                return '<span style="color: red;">' + data + '</span>';
-              },
-            },
-            {
-              data: 'userliberacion',
-              title: "Liberado por",
-              className: 'dt-body-center'
-            },
-           
-            {
-              title: "Estado",
-              className: 'dt-body-center',
-              mRender: function(data, type, row) {
-                let label = "primary";
-                switch (row.situped) {
-                  case "PD":
-                    label = "default"
-                    break;
-                  case "AN":
-                    label = "warning"
-                    break;
-                  case "CE":
-                    label = "success"
-                    break;
-                  case "DC":
-                    label = "info"
-                    break;  
-                  case "PR":
-                    label = "default"
-                    break;
-                  default:
-                    break;
-                }
-                let span = `<span class='label label-${label}' style="color:white">${row.situped}</span>`;
-                return span;
+          },
+          {
+            data: 'userliberacion',
+            title: "Liberado por",
+            className: 'dt-body-center'
+          },
+
+          {
+            title: "Estado",
+            className: 'dt-body-center',
+            mRender: function (data, type, row) {
+              let label = "primary";
+              switch (row.situped) {
+                case "PD":
+                  label = "default"
+                  break;
+                case "AN":
+                  label = "warning"
+                  break;
+                case "CE":
+                  label = "success"
+                  break;
+                case "DC":
+                  label = "info"
+                  break;
+                case "PR":
+                  label = "default"
+                  break;
+                default:
+                  break;
               }
+              let span = `<span class='label label-${label}' style="color:white">${row.situped}</span>`;
+              return span;
             }
+          }
 
           ],
         });
       }
     }
     document.addEventListener('DOMContentLoaded', function () {
-    const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
-        data: [
-            
-        ],
+      // Inicializar el jspreadsheet
+      const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
+        data: [],
         columns: [
-            
-            { type: 'dropdown', title: 'Tipo Contenedor', width: 200, source: ['Contenedor 1', 'Contenedor 2', 'Contenedor 3'] },
-            { type: 'numeric', title: 'Cantidad', width: 100 },
-            { type: 'text', title: 'Nro. Contenedor', width: 150 },
-            { type: 'text', title: 'Observacion', width: 300 }
+          { type: 'dropdown', title: 'Tipo Contenedor', width: 200, source: ['Contenedor 1', 'Contenedor 2', 'Contenedor 3'] },
+          { type: 'numeric', title: 'Cantidad', width: 100 },
+          { type: 'text', title: 'Nro. Contenedor', width: 150 },
+          { type: 'text', title: 'Observacion', width: 300 }
         ],
         minDimensions: [4, 10], // Número mínimo de columnas y filas
         allowInsertRow: true,
         allowInsertColumn: true,
         allowDeleteRow: true,
         allowDeleteColumn: true
-    });
-});
-// Función para capturar los datos cargados en el jspreadsheet
-function saveConte() {
-    // Verifica si el objeto global `jexcel` está disponible
-    const data = jexcel.spreadsheet.getData();
-    console.log(data);
-    if (typeof jexcel !== 'undefined' && typeof jexcel.getJson === 'function') {
-        // Obtiene los datos usando el método getJson() en versiones antiguas
-        const data = jexcel.getJson();
+      });
 
-        // Crear un array estructurado para enviar al servidor
-        const structuredData = data.map(row => ({
-            docompra: row[0], // Ajusta según tus columnas
-            tipconte: row[1],
-            numconte: row[2],
-            canti: row[3],
-            observacion: row[4]
-        }));
+      // Función para capturar y guardar los datos cargados en el jspreadsheet
+      window.saveConte = function () {
+        if (typeof spreadsheet !== 'undefined' && typeof spreadsheet.getData === 'function') {
+          // Obtener los datos del spreadsheet
+          const data = spreadsheet.getData();
 
-        // Enviar los datos al servidor
-        fetch('requests/saveDatConte.php', {
+          // Validar que no esté vacío
+          if (data.length === 0) {
+            alert('No hay datos en el spreadsheet para guardar.');
+            return;
+          }
+
+          // Crear un array estructurado para enviar al servidor
+          const structuredData = data.map((row, index) => {
+            return {
+              docompra: row[0] || '', // Validar cada campo y asignar un valor predeterminado
+              tipconte: row[1] || '',
+              numconte: row[2] || '',
+              canti: row[3] || '',
+              observacion: row[4] || ''
+            };
+          });
+
+          // Enviar los datos al servidor
+          fetch('requests/saveDatConte.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+              'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                action: 'add',
-                table: 'datconteped',
-                fields: 'docompra,tipconte,numconte,canti,observacion',
-                data: structuredData
+              action: 'add',
+              table: 'datconteped',
+              fields: 'docompra,tipconte,numconte,canti,observacion',
+              data: structuredData
             })
-        })
-        .then(response => response.json())
-        .then(result => {
-            alert(result.msg);
-            if (result.err === 0) {
-                window.location = 'consulta_pedprove.php';
-            }
-        })
-        .catch(error => {
-            console.error('Error al guardar los datos:', error);
-            alert('Error al guardar los datos: ' + error.message);
-        });
-    } else {
-        console.error('El método jexcel.getJson no está disponible en esta versión');
-    }
-}
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then(result => {
+              // Mostrar mensaje del servidor
+              alert(result.msg);
+              if (result.err === 0) {
+                window.location = 'consulta_pedprove.php'; // Redirigir si el guardado fue exitoso
+              }
+            })
+            .catch(error => {
+              console.error('Error al guardar los datos:', error);
+              alert('Error al guardar los datos: ' + error.message);
+            });
+        } else {
+          console.error('El objeto spreadsheet o el método getData no está disponible.');
+        }
+      };
+    });
 
-/* function saveConte() {
-      var Doc = $("#addDoc").val();  
-      var Tco = $("#addTco").val();
-      var Nco = $("#addNco").val();
-      var Can = $("#addCan").val();
-      var Obs = $("#addObs").val();
-      
 
-      if (Doc != '') {
-        $.ajax({
-          type: 'POST',
-          url: 'requests/saveDatConte.php',
-          data: {
-            action: 'add',
-            Doc: Doc,
-            Tco: Tco,
-            Nco: Nco,
-            Can: Can,
-            Obs: Obs,
+
+    /* function saveConte() {
+          var Doc = $("#addDoc").val();  
+          var Tco = $("#addTco").val();
+          var Nco = $("#addNco").val();
+          var Can = $("#addCan").val();
+          var Obs = $("#addObs").val();
           
-
-            table: 'datconteped',
-            fields: 'docompra,tipconte,numconte,canti,observacion'
-          }, success: function (data) {
-            var dt = JSON.parse(data);
-            alert(dt.msg);
-            if (dt.err == 0) {
-              window.location = 'consulta_pedprove.php';
-            }
-          }, error: function (request) {
-            alert(request.responseJSON.error);
+    
+          if (Doc != '') {
+            $.ajax({
+              type: 'POST',
+              url: 'requests/saveDatConte.php',
+              data: {
+                action: 'add',
+                Doc: Doc,
+                Tco: Tco,
+                Nco: Nco,
+                Can: Can,
+                Obs: Obs,
+              
+    
+                table: 'datconteped',
+                fields: 'docompra,tipconte,numconte,canti,observacion'
+              }, success: function (data) {
+                var dt = JSON.parse(data);
+                alert(dt.msg);
+                if (dt.err == 0) {
+                  window.location = 'consulta_pedprove.php';
+                }
+              }, error: function (request) {
+                alert(request.responseJSON.error);
+              }
+            });
+          } else {
+            alert('Favor ingresar una descripción');
           }
-        });
-      } else {
-        alert('Favor ingresar una descripción');
-      }
-    }*/
+        }*/
     /* function saveConte() {
     const data = jspreadsheet.getData('spreadsheet');
     
@@ -1016,43 +1034,43 @@ function saveConte() {
     });
 } */
     function swModal(docompra) {
-            let ped = docompra; 
-        //    console.log(ped);
-           
-            if (ped != '') {
-                $.ajax({
-                    type: 'POST',
-                    url: 'requests/getObservaciones.php',
-                    data: {
-                       
-                        ped: docompra
-                        
-                    }, success: function (data) {
-                        var dt = JSON.parse(data);
-                        if (!dt.err) {
-                            var mytable = '<table class="table table-hover table-striped table-bordered  table-condensed"><thead>' + dt.hdr + '</thead><tbody>';
+      let ped = docompra;
+      //    console.log(ped);
 
-                            $.each(dt.cab, function (key, value) {
-                                mytable += "<tr>";
-                                $.each(value, function (k, v) {
-                                    mytable += "<td>" + v + "</td>";
-                                });
-                                mytable += "</tr>";
-                            });
-                            $("#modalData .modal-dialog.modal-lg .modal-content .modal-body").empty().append(mytable);
-                            $("#modalData .modal-dialog.modal-lg .modal-content .modal-title").empty().append(dt.tit);
-                           
-                            $('#modalData').modal('show');
-                        } else {
-                            alert(dt.msg);
-                        }
-                    }
+      if (ped != '') {
+        $.ajax({
+          type: 'POST',
+          url: 'requests/getObservaciones.php',
+          data: {
+
+            ped: docompra
+
+          }, success: function (data) {
+            var dt = JSON.parse(data);
+            if (!dt.err) {
+              var mytable = '<table class="table table-hover table-striped table-bordered  table-condensed"><thead>' + dt.hdr + '</thead><tbody>';
+
+              $.each(dt.cab, function (key, value) {
+                mytable += "<tr>";
+                $.each(value, function (k, v) {
+                  mytable += "<td>" + v + "</td>";
                 });
+                mytable += "</tr>";
+              });
+              $("#modalData .modal-dialog.modal-lg .modal-content .modal-body").empty().append(mytable);
+              $("#modalData .modal-dialog.modal-lg .modal-content .modal-title").empty().append(dt.tit);
+
+              $('#modalData').modal('show');
             } else {
-                alert("Debe consultar un artículo.");
+              alert(dt.msg);
             }
-            //                $( ".modal.in > .modal-dialog > .modal-content  > .modal-body .form input:first-of-type" ).focus();
-        }
+          }
+        });
+      } else {
+        alert("Debe consultar un artículo.");
+      }
+      //                $( ".modal.in > .modal-dialog > .modal-content  > .modal-body .form input:first-of-type" ).focus();
+    }
     function generarModal(titulo, contenido) {
 
       $("#modal-generico .modal-title").empty().text(titulo);
@@ -1060,105 +1078,105 @@ function saveConte() {
       $("#modal-generico").modal('show');
 
     }
-    
-const express = require('express');
-const multer = require('multer');
-const path = require('path');
-const app = express();
 
-// Configuración de Multer para el almacenamiento de archivos
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    const express = require('express');
+    const multer = require('multer');
+    const path = require('path');
+    const app = express();
+
+    // Configuración de Multer para el almacenamiento de archivos
+    const storage = multer.diskStorage({
+      destination: function (req, file, cb) {
         cb(null, 'uploads/'); // Guardamos los archivos en la carpeta 'uploads'
-    },
-    filename: function (req, file, cb) {
+      },
+      filename: function (req, file, cb) {
         cb(null, Date.now() + path.extname(file.originalname)); // Asignamos un nombre único
-    }
-});
+      }
+    });
 
-const upload = multer({ storage: storage });
+    const upload = multer({ storage: storage });
 
-// Endpoint para manejar la subida de archivos
-app.post('/upload_documents', upload.array('documents[]'), (req, res) => {
-    const docCompra = req.body.doccompra;  // Obtenemos el valor de docCompra
-    const files = req.files;  // Obtenemos los archivos subidos
+    // Endpoint para manejar la subida de archivos
+    app.post('/upload_documents', upload.array('documents[]'), (req, res) => {
+      const docCompra = req.body.doccompra;  // Obtenemos el valor de docCompra
+      const files = req.files;  // Obtenemos los archivos subidos
 
-    if (!files || files.length === 0) {
+      if (!files || files.length === 0) {
         return res.status(400).send('No se cargaron archivos.');
-    }
+      }
 
-    // Aquí puedes guardar la información de los archivos en la base de datos
-    // Ejemplo de cómo guardar la ruta de cada archivo:
-    files.forEach(file => {
+      // Aquí puedes guardar la información de los archivos en la base de datos
+      // Ejemplo de cómo guardar la ruta de cada archivo:
+      files.forEach(file => {
         const filePath = path.join('uploads', file.filename);
-        
+
         // Aquí guardas la ruta y el docCompra en la base de datos
         // Ejemplo usando un ORM (en una base de datos SQL):
         // db.query("INSERT INTO documentos (doccompra, file_path) VALUES (?, ?)", [docCompra, filePath]);
+      });
+
+      res.send('Archivos subidos con éxito.');
     });
 
-    res.send('Archivos subidos con éxito.');
-});
+    // Servir archivos estáticos (para acceder a los documentos subidos)
+    app.use('/uploads', express.static('uploads'));
 
-// Servir archivos estáticos (para acceder a los documentos subidos)
-app.use('/uploads', express.static('uploads'));
+    // Iniciar el servidor
+    app.listen(3000, () => {
+      console.log('Servidor corriendo en puerto 3000');
+    });
 
-// Iniciar el servidor
-app.listen(3000, () => {
-    console.log('Servidor corriendo en puerto 3000');
-});
-    
     // Función para abrir el modal
-function openModal(docCompra) {
-    // Abrir el modal
-    document.getElementById('fileModal').style.display = 'block';
-    // Guardar el valor de docCompra en una variable global para usarlo al enviar el archivo
-    window.currentDocCompra = docCompra;
-}
+    function openModal(docCompra) {
+      // Abrir el modal
+      document.getElementById('fileModal').style.display = 'block';
+      // Guardar el valor de docCompra en una variable global para usarlo al enviar el archivo
+      window.currentDocCompra = docCompra;
+    }
 
-// Función para cerrar el modal
-function closeModal() {
-    document.getElementById('fileModal').style.display = 'none';
-}
+    // Función para cerrar el modal
+    function closeModal() {
+      document.getElementById('fileModal').style.display = 'none';
+    }
 
-// Función para manejar la carga de documentos
-function uploadDocuments() {
-    var files = document.getElementById("documents").files;
-    
-    if (files.length === 0) {
+    // Función para manejar la carga de documentos
+    function uploadDocuments() {
+      var files = document.getElementById("documents").files;
+
+      if (files.length === 0) {
         alert('Por favor selecciona al menos un archivo.');
         return;
-    }
+      }
 
-    var formData = new FormData();
+      var formData = new FormData();
 
-    // Agregar los archivos seleccionados
-    for (var i = 0; i < files.length; i++) {
+      // Agregar los archivos seleccionados
+      for (var i = 0; i < files.length; i++) {
         formData.append("documents[]", files[i]);  // Usamos 'documents[]' para manejar múltiples archivos
-    }
+      }
 
-    // También pasamos el valor de docCompra
-    formData.append("doccompra", window.currentDocCompra);
+      // También pasamos el valor de docCompra
+      formData.append("doccompra", window.currentDocCompra);
 
-    // Realizamos la petición AJAX para subir los documentos
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/upload_documents", true);
+      // Realizamos la petición AJAX para subir los documentos
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/upload_documents", true);
 
-    xhr.onload = function() {
+      xhr.onload = function () {
         if (xhr.status === 200) {
-            alert('Archivos subidos con éxito.');
-            closeModal();  // Cerrar el modal después de subir los archivos
+          alert('Archivos subidos con éxito.');
+          closeModal();  // Cerrar el modal después de subir los archivos
         } else {
-            alert('Hubo un error al subir los archivos.');
+          alert('Hubo un error al subir los archivos.');
         }
-    };
+      };
 
-    xhr.send(formData);
-}
+      xhr.send(formData);
+    }
     function adjuntardoc(docCompra) {
-    // Llamar a la función para abrir el modal y pasar el docCompra
-    openModal(docCompra);
-}
+      // Llamar a la función para abrir el modal y pasar el docCompra
+      openModal(docCompra);
+    }
     function solicitarAprobacion(docompra) {
       let url = "/api/v1/guardar_solicitud_aprobacion.php?docompra=" + docompra;
       let contenido = $("#form-solicitar-aprobacion").html();
@@ -1170,45 +1188,45 @@ function uploadDocuments() {
     function addDat(docompra) {
       $("#addDat .modal-title").empty().append('Añadir ');
       $('#addDat').modal('show');
-      $('#addDat input[name="addDoc"]').val(docompra); 
+      $('#addDat input[name="addDoc"]').val(docompra);
     }
     function updDat(addPue, addDes) {
       $("#editUsr .modal-title").empty().append('Editar ');
       $("#updPue").val(addPue);
       $("#updDes").val(addDes);
-     
-      
+
+
       //                $("#updAlm").val(addAlm).change();
 
       $('#editUsr').modal('show');
     }
-   function saveAdd() {
-  var Ped = $("#addPed").val();  // Obtener el valor del campo "addPed"
-  var Obs = $("#addObs").val();  // Obtener el valor del campo "addObs"
+    function saveAdd() {
+      var Ped = $("#addPed").val();  // Obtener el valor del campo "addPed"
+      var Obs = $("#addObs").val();  // Obtener el valor del campo "addObs"
 
-  // Realizar la petición AJAX independientemente de si "Ped" está vacío o no
-  $.ajax({
-    type: 'POST',
-    url: 'requests/savePedproveobse.php',  // URL del archivo PHP que maneja la solicitud
-    data: {
-      action: 'add',    // Acción a realizar en el servidor
-        Ped: Ped,         // Pasar el valor de Ped (descripción)
-        Obs: Obs,         // Pasar el valor de Obs (observación)
-        table: 'obsepedprove',  // Tabla de base de datos a la que se debe insertar
-        fields: 'pedprove,observacion'  // Campos de la tabla a insertar
-    },
-    success: function (data) {
-      var dt = JSON.parse(data);  // Parsear la respuesta JSON del servidor
-      alert(dt.msg);  // Mostrar el mensaje retornado por el servidor
-      if (dt.err == 0) {
-        window.location = 'consulta_pedprove.php';  // Redirigir si no hay errores
-      }
-    },
-    error: function (request) {
-      alert(request.responseJSON.error);  // Mostrar el error si la solicitud falla
+      // Realizar la petición AJAX independientemente de si "Ped" está vacío o no
+      $.ajax({
+        type: 'POST',
+        url: 'requests/savePedproveobse.php',  // URL del archivo PHP que maneja la solicitud
+        data: {
+          action: 'add',    // Acción a realizar en el servidor
+          Ped: Ped,         // Pasar el valor de Ped (descripción)
+          Obs: Obs,         // Pasar el valor de Obs (observación)
+          table: 'obsepedprove',  // Tabla de base de datos a la que se debe insertar
+          fields: 'pedprove,observacion'  // Campos de la tabla a insertar
+        },
+        success: function (data) {
+          var dt = JSON.parse(data);  // Parsear la respuesta JSON del servidor
+          alert(dt.msg);  // Mostrar el mensaje retornado por el servidor
+          if (dt.err == 0) {
+            window.location = 'consulta_pedprove.php';  // Redirigir si no hay errores
+          }
+        },
+        error: function (request) {
+          alert(request.responseJSON.error);  // Mostrar el error si la solicitud falla
+        }
+      });
     }
-  });
-}
 
     function solicitadc(pedido) {
       let url = "/api/v1/mod_pedprove_contenedor.php?pedido=" + pedido;
@@ -1262,7 +1280,7 @@ function uploadDocuments() {
         type: 'POST',
         url: 'requests/asignar_pedido_termial.php',
         data: data,
-        success: function(data) {
+        success: function (data) {
           var dt = JSON.parse(data);
           alert(dt.msg);
           $('#sndBtn').click();
@@ -1277,7 +1295,7 @@ function uploadDocuments() {
         data: {
           codalma: codalma
         },
-        success: function(data) {
+        success: function (data) {
           var dt = JSON.parse(data);
           $("#terminal").empty();
           dt['almacenes'].forEach(element => {
