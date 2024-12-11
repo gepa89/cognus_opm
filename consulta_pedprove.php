@@ -892,6 +892,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 // Función para capturar los datos cargados en el jspreadsheet
 function saveConte() {
     // Verifica si el objeto global `jexcel` está disponible
+    const data = jexcel.spreadsheet.getData();
+    console.log(data);
     if (typeof jexcel !== 'undefined' && typeof jexcel.getJson === 'function') {
         // Obtiene los datos usando el método getJson() en versiones antiguas
         const data = jexcel.getJson();
