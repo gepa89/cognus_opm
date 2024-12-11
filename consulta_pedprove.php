@@ -789,7 +789,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       };
     }
 
-
   </script>
 </body>
 
