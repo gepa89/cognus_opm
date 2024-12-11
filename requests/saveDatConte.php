@@ -58,71 +58,63 @@ $response = [
     'msg' => 'Operación no válida'
 ];
 
-try {
-    if ($action === 'add') {
-        // Construcción de la consulta INSERT
-        $sql = "INSERT INTO $table ($fields, usuario, fecre, horcre) VALUES ";
-        $values = [];
-        $params = [];
-        $types = '';
+if ($action === 'add') {
+    // Construcción de la consulta INSERT
+    $sql = "INSERT INTO $table ($fields, usuario, fecre, horcre) VALUES ";
+    $values = [];
+    $params = [];
+    $types = '';
 
-        foreach ($rows as $row) {
-            // Validar que cada campo requerido exista en cada objeto del array
-            if (!isset($row['docompra'], $row['tipconte'], $row['numconte'], $row['canti'], $row['observacion'])) {
-                echo json_encode(['err' => 1, 'msg' => 'Datos incompletos en una o más filas']);
-                exit;
-            }
-
-            // Crear placeholders y agregar valores
-            $values[] = "(?, ?, ?, ?, ?, ?, ?, ?)";
-            $params = array_merge($params, [
-                $row['docompra'],
-                $row['tipconte'],
-                $row['numconte'],
-                $row['canti'],
-                $row['observacion'],
-                $usuario,
-                $fecha,
-                $hora
-            ]);
-            $types .= 'ssssssss'; // Tipos de datos para bind_param
+    foreach ($rows as $row) {
+        // Validar que cada campo requerido exista en cada objeto del array
+        if (!isset($row['docompra'], $row['tipconte'], $row['numconte'], $row['canti'], $row['observacion'])) {
+            echo json_encode(['err' => 1, 'msg' => 'Datos incompletos en una o más filas']);
+            exit;
         }
 
-        $sql .= implode(',', $values);
+        // Crear placeholders y agregar valores
+        $values[] = "(?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = array_merge($params, [
+            $row['docompra'],
+            $row['tipconte'],
+            $row['numconte'],
+            $row['canti'],
+            $row['observacion'],
+            $usuario,
+            $fecha,
+            $hora
+        ]);
+        $types .= 'ssssssss'; // Tipos de datos para bind_param
+    }
 
-        $stmt = $db->prepare($sql);
+    $sql .= implode(',', $values);
 
-        if (!$stmt) {
-            throw new Exception('Error al preparar la consulta: ' . $db->error);
-        }
+    $stmt = $db->prepare($sql);
 
-        $stmt->bind_param($types, ...$params);
+    if (!$stmt) {
+        throw new Exception('Error al preparar la consulta: ' . $db->error);
+    }
 
-        if ($stmt->execute()) {
-            $response = [
-                'err' => 0,
-                'msg' => 'Datos guardados exitosamente'
-            ];
-        } else {
-            $response = [
-                'err' => 1,
-                'msg' => 'Error al ejecutar la consulta: ' . $stmt->error
-            ];
-        }
+    $stmt->bind_param($types, ...$params);
 
-        $stmt->close();
+    if ($stmt->execute()) {
+        $response = [
+            'err' => 0,
+            'msg' => 'Datos guardados exitosamente'
+        ];
     } else {
         $response = [
             'err' => 1,
-            'msg' => 'Acción no válida'
+            'msg' => 'Error al ejecutar la consulta: ' . $stmt->error
         ];
     }
-} catch (Exception $e) {
+
+    $stmt->close();
+} else {
     $response = [
         'err' => 1,
-        'msg' => 'Error del servidor: ' . $e->getMessage()
+        'msg' => 'Acción no válida'
     ];
 }
-
 $db->close();
 echo json_encode($response);
