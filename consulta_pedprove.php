@@ -780,37 +780,42 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
             title: "Acciones",
             className: 'dt-body-center',
             mRender: function (data, type, row) {
-              let progrButton = `<li><a style="margin:0;padding:0" onclick="solicitadc('${row.docompra}')" href="javascript:void(0);">Solicitar DC </a></li>`;
-              let anularButton = `<li><a style="margin:0;padding:0"  onclick="anularPedido('${row.docompra}')"  href="javascript:void(0);">Anular</a></li>`;
-              let cerrarButton = `<li><a style="margin:0;padding:0"  onclick="cerrarPedido('${row.docompra}')"  href="javascript:void(0);">Cerrar</a></li>`;
-              let solicitaApro = `<li><a style="margin:0;padding:0" onclick="solicitarAprobacion('${row.docompra}')" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
-              let addcontaine = `<li><a style="margin:0;padding:0" onclick="addDat('${row.docompra}')" href="javascript:void(0);">Add Container Data</a></li>`;
-              let editcontaine = `<li><a style="margin:0;padding:0" onclick="updUsr('${row.docompra}')" href="javascript:void(0);">Edit Container Data</a></li>`;
-              let adjuntardocu = `<li><a style="margin:0;padding:0" onclick="adjuntardoc('${row.docompra}')" href="javascript:void(0);">Adjuntar Documento</a></li>`;
-              let modPedido = `<li><a style="margin:0;padding:0"  target="_blank" href="mod_pedidos.php"  href="javascript:void(0);">Modificar Pedido</a></li>`;
-              let group = `<div class="btn-group">
-                      <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Acciones <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-small">
-                      ${progrButton}
-                      ${anularButton}
-                      ${cerrarButton}
-                      ${solicitaApro}
-                      ${addcontaine}
-                      ${editcontaine}
-                      ${adjuntardocu}
-                      ${modPedido}
-                      
-                      
-                      </ul>
-                    </div>`;
+              // Genera los botones del dropdown con atributos de datos personalizados
+              let progrButton = `<li><a style="margin:0;padding:0" data-action="solicitadc" data-docompra="${row.docompra}" href="javascript:void(0);">Solicitar DC</a></li>`;
+              let anularButton = `<li><a style="margin:0;padding:0" data-action="anularPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Anular</a></li>`;
+              let cerrarButton = `<li><a style="margin:0;padding:0" data-action="cerrarPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Cerrar</a></li>`;
+              let solicitaApro = `<li><a style="margin:0;padding:0" data-action="solicitarAprobacion" data-docompra="${row.docompra}" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
+              let addcontaine = `<li><a style="margin:0;padding:0" data-action="addDat" data-docompra="${row.docompra}" href="javascript:void(0);">Add Container Data</a></li>`;
+              let editcontaine = `<li><a style="margin:0;padding:0" data-action="updUsr" data-docompra="${row.docompra}" href="javascript:void(0);">Edit Container Data</a></li>`;
+              let adjuntardocu = `<li><a style="margin:0;padding:0" data-action="adjuntardoc" data-docompra="${row.docompra}" href="javascript:void(0);">Adjuntar Documento</a></li>`;
+              let modPedido = `<li><a style="margin:0;padding:0" data-action="modificarPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Modificar Pedido</a></li>`;
 
+              // Contenedor del grupo de botones
+              let group = `
+        <div class="btn-group">
+            <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Acciones <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-small">
+                ${progrButton}
+                ${anularButton}
+                ${cerrarButton}
+                ${solicitaApro}
+                ${addcontaine}
+                ${editcontaine}
+                ${adjuntardocu}
+                ${modPedido}
+            </ul>
+        </div>
+    `;
+
+              // Condición para ocultar el dropdown si el estado es "AN" o "CE"
               if (row.estado == "AN" || row.estado == "CE") {
                 group = "";
               }
               return group;
             }
+
           },
           {
             title: "Observacion",
@@ -876,6 +881,60 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         });
       }
     }
+    // Maneja los clics en los botones del dropdown dinámico
+    $(document).on('click', '.dropdown-menu li a', function (event) {
+      event.preventDefault(); // Evita el comportamiento por defecto del enlace
+
+      // Obtén el valor del atributo `data-action` y `data-docompra`
+      const action = $(this).data('action');
+      const docompra = $(this).data('docompra');
+
+      // Valida si la función correspondiente existe y ejecútala
+      if (action && typeof window[action] === 'function') {
+        window[action](docompra);
+      } else {
+        console.error(`La acción "${action}" no está definida o no es una función.`);
+      }
+    });
+    window.solicitadc = function (docompra) {
+      console.log(`Solicitando DC para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.anularPedido = function (docompra) {
+      console.log(`Anulando pedido para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.cerrarPedido = function (docompra) {
+      console.log(`Cerrando pedido para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.solicitarAprobacion = function (docompra) {
+      console.log(`Solicitando aprobación para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.addDat = function (docompra) {
+      console.log(`Agregando container data para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.updUsr = function (docompra) {
+      console.log(`Editando container data para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.adjuntardoc = function (docompra) {
+      console.log(`Adjuntando documento para ${docompra}`);
+      // Lógica aquí
+    };
+
+    window.modificarPedido = function (docompra) {
+      console.log(`Modificando pedido para ${docompra}`);
+      // Lógica aquí
+    };
     document.addEventListener('DOMContentLoaded', function () {
       let pedidoATratar = null;
 
