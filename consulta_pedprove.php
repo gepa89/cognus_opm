@@ -780,31 +780,30 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
             title: "Acciones",
             className: 'dt-body-center',
             mRender: function (data, type, row) {
-              let progrButton = `<li><a style="margin:0;padding:0" onclick="solicitadc('${row.docompra}')" href="javascript:void(0);">Solicitar DC </a></li>`;
-              let anularButton = `<li><a style="margin:0;padding:0"  onclick="anularPedido('${row.docompra}')"  href="javascript:void(0);">Anular</a></li>`;
-              let cerrarButton = `<li><a style="margin:0;padding:0"  onclick="cerrarPedido('${row.docompra}')"  href="javascript:void(0);">Cerrar</a></li>`;
-              let solicitaApro = `<li><a style="margin:0;padding:0" onclick="solicitarAprobacion('${row.docompra}')" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
-              let addcontaine = `<li><a style="margin:0;padding:0" onclick="addDat('${row.docompra}')" href="javascript:void(0);">Add Container Data</a></li>`;
-              let editcontaine = `<li><a style="margin:0;padding:0" onclick="updUsr('${row.docompra}')" href="javascript:void(0);">Edit Container Data</a></li>`;
-              let adjuntardocu = `<li><a style="margin:0;padding:0" onclick="adjuntardoc('${row.docompra}')" href="javascript:void(0);">Adjuntar Documento</a></li>`;
-              let modPedido = `<li><a style="margin:0;padding:0"  target="_blank" href="mod_pedidos.php"  href="javascript:void(0);">Modificar Pedido</a></li>`;
+              let progrButton = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="solicitadc" data-docompra="${row.docompra}" href="javascript:void(0);">Solicitar DC</a></li>`;
+              let anularButton = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="anularPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Anular</a></li>`;
+              let cerrarButton = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="cerrarPedido" data-docompra="${row.docompra}" href="javascript:void(0);">Cerrar</a></li>`;
+              let solicitaApro = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="solicitarAprobacion" data-docompra="${row.docompra}" href="javascript:void(0);">Sol.Aprobacion</a></li>`;
+              let addcontaine = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="addDat" data-docompra="${row.docompra}" href="javascript:void(0);">Add Container Data</a></li>`;
+              let editcontaine = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="updUsr" data-docompra="${row.docompra}" href="javascript:void(0);">Edit Container Data</a></li>`;
+              let adjuntardocu = `<li><a style="margin:0;padding:0" class="dynamic-action" data-action="adjuntardoc" data-docompra="${row.docompra}" href="javascript:void(0);">Adjuntar Documento</a></li>`;
+              let modPedido = `<li><a style="margin:0;padding:0" target="_blank" class="dynamic-action" data-action="modificarPedido" data-docompra="${row.docompra}" href="mod_pedidos.php">Modificar Pedido</a></li>`;
+
               let group = `<div class="btn-group">
-                      <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Acciones <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-small">
-                      ${progrButton}
-                      ${anularButton}
-                      ${cerrarButton}
-                      ${solicitaApro}
-                      ${addcontaine}
-                      ${editcontaine}
-                      ${adjuntardocu}
-                      ${modPedido}
-                      
-                      
-                      </ul>
-                    </div>`;
+                <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Acciones <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-small">
+                  ${progrButton}
+                  ${anularButton}
+                  ${cerrarButton}
+                  ${solicitaApro}
+                  ${addcontaine}
+                  ${editcontaine}
+                  ${adjuntardocu}
+                  ${modPedido}
+                </ul>
+              </div>`;
 
               if (row.estado == "AN" || row.estado == "CE") {
                 group = "";
@@ -876,6 +875,42 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         });
       }
     }
+
+    document.addEventListener('click', function (event) {
+      // Verificar si el clic ocurrió en un elemento con la clase `dynamic-action`
+      if (event.target && event.target.classList.contains('dynamic-action')) {
+        event.preventDefault();
+
+        // Obtener el valor del atributo `data-action` y `data-docompra`
+        const action = event.target.getAttribute('data-action');
+        const docompra = event.target.getAttribute('data-docompra');
+
+        // Llamar a la función correspondiente
+        switch (action) {
+          case 'addDat':
+            addDat(docompra);
+            break;
+          case 'solicitadc':
+            solicitadc(docompra);
+            break;
+          case 'anularPedido':
+            anularPedido(docompra);
+            break;
+          case 'cerrarPedido':
+            cerrarPedido(docompra);
+            break;
+          case 'solicitarAprobacion':
+            solicitarAprobacion(docompra);
+            break;
+          case 'adjuntardoc':
+            adjuntardoc(docompra);
+            break;
+          default:
+            console.error('Acción no reconocida:', action);
+        }
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', function () {
       let pedidoATratar = null;
 
