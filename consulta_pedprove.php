@@ -476,84 +476,85 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
   </form>
   </script>
   <script type="text/javascript">
-   const BASE_URL = '/api/v1/';
+    const BASE_URL = '/api/v1/';
 
-$(document).ready(function () {
-    initializeSearch();
-    initializeMultiselects(["#clase_documento", "#situacion"]);
-    datatable(null);
+    $(document).ready(function () {
+      initializeSearch();
+      initializeMultiselects(["#clase_documento", "#situacion"]);
+      datatable(null);
 
-    $('#tblReg tbody').on('click', '.details-control', handleDetailsControl);
-    $("#form_filtros").submit(handleFilterForm);
-    initializeSpreadsheet();
-    setupDynamicActions();
-});
+      $('#tblReg tbody').on('click', '.details-control', handleDetailsControl);
+      $("#form_filtros").submit(handleFilterForm);
+      initializeSpreadsheet();
+      setupDynamicActions();
+      setupModals();
+    });
 
-function initializeSearch() {
-    let delayFunction = null;
+    function initializeSearch() {
+      let delayFunction = null;
 
-    $('#search').on('keyup', function () {
+      $('#search').on('keyup', function () {
         if (delayFunction) clearTimeout(delayFunction);
         delayFunction = setTimeout(() => {
-            table.search($('#search').val()).draw();
+          table.search($('#search').val()).draw();
         }, 500);
-    });
-}
+      });
+    }
 
-function initializeMultiselects(selectors) {
-    selectors.forEach(selector => {
+    function initializeMultiselects(selectors) {
+      selectors.forEach(selector => {
         $(selector).multiselect({
-            selectAllText: 'Todos',
-            includeSelectAllOption: true,
-            enableFiltering: true,
-            buttonWidth: '100%',
-            enableCaseInsensitiveFiltering: true,
-            buttonText: function (options) {
-                return options.length === 0 ? 'Ninguno' : `${options.length} seleccionado(s)`;
-            }
+          selectAllText: 'Todos',
+          includeSelectAllOption: true,
+          enableFiltering: true,
+          buttonWidth: '100%',
+          enableCaseInsensitiveFiltering: true,
+          buttonText: function (options) {
+            return options.length === 0 ? 'Ninguno' : `${options.length} seleccionado(s)`;
+          }
         });
-    });
-}
+      });
+    }
 
-function datatable(url) {
-    $.LoadingOverlay("show");
+    function datatable(url) {
+      $.LoadingOverlay("show");
 
-    if ($.fn.dataTable.isDataTable('#tblReg')) {
+      if ($.fn.dataTable.isDataTable('#tblReg')) {
         table.ajax.url(url).load();
         $.LoadingOverlay("hide");
-    } else {
+      } else {
         table = $('#tblReg').DataTable({
-            dom: '<"top"Bfrtip>',
-            ajax: {
-                type: "GET",
-                url: obtenerURL(),
-                dataSrc: function (json) {
-                    $.LoadingOverlay("hide");
-                    return json.data;
-                },
-                error: logAjaxError
+          dom: '<"top"Bfrtip>',
+          ajax: {
+            type: "GET",
+            url: obtenerURL(),
+            dataSrc: function (json) {
+              $.LoadingOverlay("hide");
+              return json.data;
             },
-            paging: true,
-            processing: true,
-            serverSide: true,
-            searching: true,
-            ordering: true,
-            scrollX: true,
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json',
-            },
-            columnDefs: [{
-                className: 'details-control',
-                orderable: false,
-                targets: 0
-            }],
-            columns: getTableColumns()
+            error: logAjaxError
+          },
+          paging: true,
+          processing: true,
+          serverSide: true,
+          searching: true,
+          ordering: true,
+          scrollX: true,
+          language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json',
+          },
+          columnDefs: [{
+            className: 'details-control',
+            orderable: false,
+            targets: 0
+          }],
+          columns: getTableColumns()
         });
+      }
     }
-}
 
-function getTableColumns() {
-    return [
+    function getTableColumns() {
+      return [
         { className: 'details-control details-open', orderable: false, data: null, defaultContent: '' },
         { data: 'docompra', title: "Pedido", className: 'dt-body-center' },
         { data: 'clasdoc', title: "Clas.Doc.", className: 'dt-body-center' },
@@ -567,25 +568,25 @@ function getTableColumns() {
         { data: 'userliberacion', title: "Liberado por", className: 'dt-body-center' },
         { title: "Estado", className: 'dt-body-center', mRender: renderStatus },
         { title: "Acciones", className: 'dt-body-center', mRender: renderActions },
-    ];
-}
+      ];
+    }
 
-function renderStatus(data, type, row) {
-    const statusLabels = {
+    function renderStatus(data, type, row) {
+      const statusLabels = {
         "PD": "default",
         "AN": "warning",
         "CE": "success",
         "DC": "info",
         "PR": "default"
-    };
-    const labelClass = statusLabels[row.situped] || "primary";
-    return `<span class='label label-${labelClass}' style="color:white">${row.situped}</span>`;
-}
+      };
+      const labelClass = statusLabels[row.situped] || "primary";
+      return `<span class='label label-${labelClass}' style="color:white">${row.situped}</span>`;
+    }
 
-function renderActions(data, type, row) {
-    if (["AN", "CE"].includes(row.estado)) return "";
+    function renderActions(data, type, row) {
+      if (["AN", "CE"].includes(row.estado)) return "";
 
-    const actions = [
+      const actions = [
         createActionButton("solicitadc", "Solicitar DC", row.docompra),
         createActionButton("anularPedido", "Anular", row.docompra),
         createActionButton("cerrarPedido", "Cerrar", row.docompra),
@@ -594,9 +595,9 @@ function renderActions(data, type, row) {
         createActionButton("updUsr", "Edit Container Data", row.docompra),
         createActionButton("adjuntardoc", "Adjuntar Documento", row.docompra),
         createActionButton("modificarPedido", "Modificar Pedido", row.docompra, "mod_pedidos.php")
-    ];
+      ];
 
-    return `<div class="btn-group">
+      return `<div class="btn-group">
                 <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
                     Acciones <span class="caret"></span>
                 </button>
@@ -604,14 +605,14 @@ function renderActions(data, type, row) {
                     ${actions.join("\n")}
                 </ul>
             </div>`;
-}
+    }
 
-function createActionButton(action, text, docompra, url = "javascript:void(0);") {
-    return `<li><a class="dynamic-action" data-action="${action}" data-docompra="${docompra}" href="${url}">${text}</a></li>`;
-}
+    function createActionButton(action, text, docompra, url = "javascript:void(0);") {
+      return `<li><a class="dynamic-action" data-action="${action}" data-docompra="${docompra}" href="${url}">${text}</a></li>`;
+    }
 
-function obtenerURL() {
-    const params = new URLSearchParams({
+    function obtenerURL() {
+      const params = new URLSearchParams({
         pedido: $("#pedido").val(),
         proveedor: $("#proveedor").val(),
         fecha_desde: $("#fecha_desde").val(),
@@ -619,41 +620,41 @@ function obtenerURL() {
         clase_documento: $("#clase_documento").val() || "",
         situacion: $("#situacion").val() || "",
         almacen: $("#codalma").val()
-    });
-    return `${BASE_URL}obtener_pedprove.php?${params.toString()}`;
-}
+      });
+      return `${BASE_URL}obtener_pedprove.php?${params.toString()}`;
+    }
 
-function handleDetailsControl() {
-    const table = $("#tblReg").DataTable({ retrieve: true });
-    const tr = $(this).closest('tr');
-    const row = table.row(tr);
-    const rowData = row.data();
+    function handleDetailsControl() {
+      const table = $("#tblReg").DataTable({ retrieve: true });
+      const tr = $(this).closest('tr');
+      const row = table.row(tr);
+      const rowData = row.data();
 
-    if (row.child.isShown()) {
+      if (row.child.isShown()) {
         $(tr.find('td:first')[0]).toggleClass('details-open details-close');
         row.child.hide();
         tr.removeClass('shown');
-    } else {
+      } else {
         $(tr.find('td:first')[0]).toggleClass('details-close details-open');
         row.child("<div>Cargando Espere ...</div>").show();
         tr.addClass('shown');
 
         $.LoadingOverlay("show");
         $.ajax({
-            url: `${BASE_URL}obtener_pedprove_detalle.php`,
-            data: { pedido: rowData.docompra },
-            dataType: 'json',
-            success: function (json) {
-                $.LoadingOverlay("hide");
-                generarTablaDetalles(rowData.pedido, json.detalles, row);
-            },
-            error: logAjaxError
+          url: `${BASE_URL}obtener_pedprove_detalle.php`,
+          data: { pedido: rowData.docompra },
+          dataType: 'json',
+          success: function (json) {
+            $.LoadingOverlay("hide");
+            generarTablaDetalles(rowData.pedido, json.detalles, row);
+          },
+          error: logAjaxError
         });
+      }
     }
-}
 
-function generarTablaDetalles(pedido, datos, row) {
-    const columnas = [
+    function generarTablaDetalles(pedido, datos, row) {
+      const columnas = [
         { data: 'posnr', title: 'Pos.', className: 'dt-body-center' },
         { data: 'artrefer', title: 'Material', className: 'dt-body-center' },
         { data: 'artdesc', title: 'Descripcion', className: 'dt-body-center' },
@@ -664,10 +665,10 @@ function generarTablaDetalles(pedido, datos, row) {
         { data: 'cencod', title: 'Centro', className: 'dt-body-center' },
         { data: 'cod_alma', title: 'Almacen', className: 'dt-body-center' },
         { data: 'volumen', title: 'Grup.Art.', className: 'dt-body-center' }
-    ];
+      ];
 
-    row.child(`<table class="table table-bordered" style="width:100%" id='tabla-${pedido}'></table>`).show();
-    $(`#tabla-${pedido}`).DataTable({
+      row.child(`<table class="table table-bordered" style="width:100%" id='tabla-${pedido}'></table>`).show();
+      $(`#tabla-${pedido}`).DataTable({
         language: { url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json' },
         info: false,
         ordering: false,
@@ -675,106 +676,119 @@ function generarTablaDetalles(pedido, datos, row) {
         data: datos,
         scrollX: true,
         columns: columnas
-    });
-}
+      });
+    }
 
-function logAjaxError(xhr, error, thrown) {
-    $.LoadingOverlay("hide");
-    console.error(xhr, error, thrown);
-}
+    function logAjaxError(xhr, error, thrown) {
+      $.LoadingOverlay("hide");
+      console.error(xhr, error, thrown);
+    }
 
-function handleFilterForm(event) {
-    event.preventDefault();
-    $.LoadingOverlay("show");
-    datatable(obtenerURL());
-}
+    function handleFilterForm(event) {
+      event.preventDefault();
+      $.LoadingOverlay("show");
+      datatable(obtenerURL());
+    }
 
-function initializeSpreadsheet() {
-    const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
+    function initializeSpreadsheet() {
+      const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
         data: [],
         columns: [
-            { type: 'dropdown', title: 'Tipo Contenedor', width: 200, source: ['Contenedor 1', 'Contenedor 2', 'Contenedor 3'] },
-            { type: 'numeric', title: 'Cantidad', width: 100 },
-            { type: 'text', title: 'Nro. Contenedor', width: 150 },
-            { type: 'text', title: 'Observacion', width: 300 }
+          { type: 'dropdown', title: 'Tipo Contenedor', width: 200, source: ['Contenedor 1', 'Contenedor 2', 'Contenedor 3'] },
+          { type: 'numeric', title: 'Cantidad', width: 100 },
+          { type: 'text', title: 'Nro. Contenedor', width: 150 },
+          { type: 'text', title: 'Observacion', width: 300 }
         ],
         minDimensions: [4, 10],
         allowInsertRow: true,
         allowInsertColumn: true,
         allowDeleteRow: true,
         allowDeleteColumn: true
-    });
+      });
 
-    window.saveConte = function () {
+      window.saveConte = function () {
         if (typeof spreadsheet !== 'undefined' && typeof spreadsheet.getData === 'function') {
-            const data = spreadsheet.getData();
-            const filteredData = data.filter(row => row.every(cell => cell !== null && cell !== ''));
+          const data = spreadsheet.getData();
+          const filteredData = data.filter(row => row.every(cell => cell !== null && cell !== ''));
 
-            if (filteredData.length === 0) {
-                alert('No hay filas completas en el spreadsheet para guardar.');
-                return;
-            }
+          if (filteredData.length === 0) {
+            alert('No hay filas completas en el spreadsheet para guardar.');
+            return;
+          }
 
-            const structuredData = filteredData.map(row => ({
-                docompra: window.currentDocCompra,
-                tipconte: row[0],
-                canti: row[1],
-                numconte: row[2],
-                observacion: row[3]
-            }));
+          const structuredData = filteredData.map(row => ({
+            docompra: window.currentDocCompra,
+            tipconte: row[0],
+            canti: row[1],
+            numconte: row[2],
+            observacion: row[3]
+          }));
 
-            fetch('requests/saveDatConte.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    action: 'add',
-                    table: 'datconteped',
-                    fields: 'docompra,tipconte,numconte,canti,observacion',
-                    data: structuredData
-                })
+          fetch('requests/saveDatConte.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action: 'add',
+              table: 'datconteped',
+              fields: 'docompra,tipconte,numconte,canti,observacion',
+              data: structuredData
             })
+          })
             .then(response => response.json())
             .then(result => {
-                if (result.err === 0) {
-                    alert(result.msg);
-                    window.location = 'consulta_pedprove.php';
-                } else {
-                    alert(result.msg || 'Error desconocido en el servidor');
-                }
+              if (result.err === 0) {
+                alert(result.msg);
+                window.location = 'consulta_pedprove.php';
+              } else {
+                alert(result.msg || 'Error desconocido en el servidor');
+              }
             })
             .catch(error => {
-                console.error('Error al guardar los datos:', error);
-                alert('Error al guardar los datos: ' + error.message);
+              console.error('Error al guardar los datos:', error);
+              alert('Error al guardar los datos: ' + error.message);
             });
         } else {
-            console.error('El objeto spreadsheet o el método getData no está disponible.');
+          console.error('El objeto spreadsheet o el método getData no está disponible.');
         }
-    };
-}
+      };
+    }
 
-function setupDynamicActions() {
-    document.addEventListener('click', function (event) {
+    function setupDynamicActions() {
+      document.addEventListener('click', function (event) {
         if (event.target && event.target.classList.contains('dynamic-action')) {
-            event.preventDefault();
-            const action = event.target.getAttribute('data-action');
-            const docompra = event.target.getAttribute('data-docompra');
+          event.preventDefault();
+          const action = event.target.getAttribute('data-action');
+          const docompra = event.target.getAttribute('data-docompra');
 
-            switch (action) {
-                case 'addDat':
-                    window.currentDocCompra = docompra;
-                    break;
-                case 'solicitadc':
-                    alert(`Solicitar DC para ${docompra}`);
-                    break;
-                case 'anularPedido':
-                    alert(`Anular Pedido ${docompra}`);
-                    break;
-                default:
-                    console.error('Acción no reconocida:', action);
-            }
+          switch (action) {
+            case 'addDat':
+              window.currentDocCompra = docompra;
+              openModal('Agregar Contenedor', '#add-container-modal');
+              break;
+            case 'solicitadc':
+              openModal(`Solicitar DC para ${docompra}`, '#solicitar-dc-modal');
+              break;
+            case 'anularPedido':
+              openModal(`Anular Pedido ${docompra}`, '#anular-pedido-modal');
+              break;
+            default:
+              console.error('Acción no reconocida:', action);
+          }
         }
-    });
-}
+      });
+    }
+
+    function setupModals() {
+      window.openModal = function (title, selector) {
+        $(selector).find('.modal-title').text(title);
+        $(selector).modal('show');
+      };
+
+      window.closeModal = function (selector) {
+        $(selector).modal('hide');
+      };
+    }
+
 
   </script>
 </body>
