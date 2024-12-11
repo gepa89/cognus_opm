@@ -490,6 +490,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       setupModals();
     });
 
+    /**
+     * Initialize search functionality with debounce.
+     */
     function initializeSearch() {
       let delayFunction = null;
 
@@ -501,6 +504,10 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       });
     }
 
+    /**
+     * Initialize multiselect dropdowns.
+     * @param {Array} selectors - Array of selector strings for multiselect elements.
+     */
     function initializeMultiselects(selectors) {
       selectors.forEach(selector => {
         $(selector).multiselect({
@@ -516,6 +523,10 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       });
     }
 
+    /**
+     * Initialize and manage the DataTable.
+     * @param {string|null} url - URL for DataTable's AJAX source.
+     */
     function datatable(url) {
       $.LoadingOverlay("show");
 
@@ -553,6 +564,10 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       }
     }
 
+    /**
+     * Define columns for the DataTable.
+     * @returns {Array} Columns configuration.
+     */
     function getTableColumns() {
       return [
         { className: 'details-control details-open', orderable: false, data: null, defaultContent: '' },
@@ -567,10 +582,17 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         { data: 'totalp', title: '<span style="color: red;">Valor Pedido</span>', className: 'dt-body-center', render: data => `<span style="color: red;">${data}</span>` },
         { data: 'userliberacion', title: "Liberado por", className: 'dt-body-center' },
         { title: "Estado", className: 'dt-body-center', mRender: renderStatus },
-        { title: "Acciones", className: 'dt-body-center', mRender: renderActions },
+        { title: "Acciones", className: 'dt-body-center', mRender: renderActions }
       ];
     }
 
+    /**
+     * Render the status column in DataTable.
+     * @param {any} data - Status data.
+     * @param {string} type - Column type.
+     * @param {Object} row - Row data.
+     * @returns {string} Rendered HTML.
+     */
     function renderStatus(data, type, row) {
       const statusLabels = {
         "PD": "default",
@@ -583,6 +605,13 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       return `<span class='label label-${labelClass}' style="color:white">${row.situped}</span>`;
     }
 
+    /**
+     * Render the actions column in DataTable.
+     * @param {any} data - Data for the column.
+     * @param {string} type - Column type.
+     * @param {Object} row - Row data.
+     * @returns {string} Rendered HTML for actions.
+     */
     function renderActions(data, type, row) {
       if (["AN", "CE"].includes(row.estado)) return "";
 
@@ -607,10 +636,73 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
             </div>`;
     }
 
+    /**
+     * Create a single action button for DataTable actions.
+     * @param {string} action - Action identifier.
+     * @param {string} text - Button text.
+     * @param {string} docompra - Associated `docompra` value.
+     * @param {string} [url="javascript:void(0);"] - URL for the action.
+     * @returns {string} Rendered HTML for the action button.
+     */
     function createActionButton(action, text, docompra, url = "javascript:void(0);") {
       return `<li><a class="dynamic-action" data-action="${action}" data-docompra="${docompra}" href="${url}">${text}</a></li>`;
     }
 
+    /**
+     * Handle click events for dynamic actions.
+     */
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+
+      if (target && target.classList.contains('dynamic-action')) {
+        event.preventDefault();
+
+        const action = target.getAttribute('data-action');
+        const docompra = target.getAttribute('data-docompra');
+
+        handleAction(action, docompra);
+      }
+    });
+
+    /**
+     * Handle specific actions triggered by dynamic action buttons.
+     * @param {string} action - Action identifier.
+     * @param {string} docompra - Associated `docompra` value.
+     */
+    function handleAction(action, docompra) {
+      switch (action) {
+        case 'solicitadc':
+          openModal(`Solicitar DC para ${docompra}`, '#solicitar-dc-modal');
+          break;
+        case 'anularPedido':
+          openModal(`Anular Pedido ${docompra}`, '#anular-pedido-modal');
+          break;
+        case 'cerrarPedido':
+          openModal(`Cerrar Pedido ${docompra}`, '#cerrar-pedido-modal');
+          break;
+        case 'addDat':
+          window.currentDocCompra = docompra;
+          openModal('Agregar Contenedor', '#add-container-modal');
+          break;
+        default:
+          console.error('Acción no reconocida:', action);
+      }
+    }
+
+    /**
+     * Open a modal with the given title and selector.
+     * @param {string} title - Modal title.
+     * @param {string} selector - Modal selector.
+     */
+    function openModal(title, selector) {
+      $(selector).find('.modal-title').text(title);
+      $(selector).modal('show');
+    }
+
+    /**
+     * Generate URL for DataTable's AJAX source based on filters.
+     * @returns {string} Generated URL.
+     */
     function obtenerURL() {
       const params = new URLSearchParams({
         pedido: $("#pedido").val(),
@@ -624,6 +716,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       return `${BASE_URL}obtener_pedprove.php?${params.toString()}`;
     }
 
+    /**
+     * Handle details control click event to show/hide row details.
+     */
     function handleDetailsControl() {
       const table = $("#tblReg").DataTable({ retrieve: true });
       const tr = $(this).closest('tr');
@@ -653,6 +748,12 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       }
     }
 
+    /**
+     * Generate details table for a row.
+     * @param {string} pedido - Pedido identifier.
+     * @param {Array} datos - Data for the details.
+     * @param {Object} row - Row object.
+     */
     function generarTablaDetalles(pedido, datos, row) {
       const columnas = [
         { data: 'posnr', title: 'Pos.', className: 'dt-body-center' },
@@ -679,17 +780,27 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       });
     }
 
+    /**
+     * Log AJAX errors to console.
+     */
     function logAjaxError(xhr, error, thrown) {
       $.LoadingOverlay("hide");
       console.error(xhr, error, thrown);
     }
 
+    /**
+     * Handle form submission for filtering data.
+     * @param {Event} event - Form submit event.
+     */
     function handleFilterForm(event) {
       event.preventDefault();
       $.LoadingOverlay("show");
       datatable(obtenerURL());
     }
 
+    /**
+     * Initialize spreadsheet functionality.
+     */
     function initializeSpreadsheet() {
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
         data: [],
@@ -753,6 +864,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       };
     }
 
+    /**
+     * Setup dynamic actions handling.
+     */
     function setupDynamicActions() {
       document.addEventListener('click', function (event) {
         if (event.target && event.target.classList.contains('dynamic-action')) {
@@ -776,19 +890,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           }
         }
       });
+
     }
-
-    function setupModals() {
-      window.openModal = function (title, selector) {
-        $(selector).find('.modal-title').text(title);
-        $(selector).modal('show');
-      };
-
-      window.closeModal = function (selector) {
-        $(selector).modal('hide');
-      };
-    }
-
   </script>
 </body>
 
