@@ -905,7 +905,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.anularPedido = function (docompra) {
       console.log(`Anulando pedido para ${docompra}`);
-      
+
       let url = "/api/v1/anular_pedprove.php?docompra=" + docompra;
       let contenido = $("#anular-pedido").html();
       contenido = contenido.replace('__pedido__', docompra);
@@ -916,7 +916,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.cerrarPedido = function (docompra) {
       console.log(`Cerrando pedido para ${docompra}`);
-      
+
       let url = "/api/v1/cerrar_pedprove.php?docompra" + docompra;
       let contenido = $("#cerrar-pedido").html();
       contenido = contenido.replace('__pedido__', docompra);
@@ -927,7 +927,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.solicitarAprobacion = function (docompra) {
       console.log(`Solicitando aprobación para ${docompra}`);
-      
+
       let url = "/api/v1/guardar_solicitud_aprobacion.php?docompra=" + docompra;
       let contenido = $("#form-solicitar-aprobacion").html();
       contenido = contenido.replace('__pedido__', docompra);
@@ -949,7 +949,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.updUsr = function (addPue, addDes) {
       console.log(`Editando container data para ${docompra}`);
-      
+
       $("#editUsr .modal-title").empty().append('Editar ');
       $("#updPue").val(addPue);
       $("#updDes").val(addDes);
@@ -1033,10 +1033,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               return response.json();
             })
             .then(result => {
-              // Validar la respuesta del servidor
               if (result && result.err === 0) {
                 alert(result.msg);
-                window.location = 'consulta_pedprove.php'; // Redirigir si el guardado fue exitoso
+                window.location = 'consulta_pedprove.php';
               } else {
                 alert(result.msg || 'Error desconocido en el servidor');
               }
@@ -1045,11 +1044,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               console.error('Error al guardar los datos:', error);
               alert('Error al guardar los datos: ' + error.message);
             });
-        } else {
-          console.error('El objeto spreadsheet o el método getData no está disponible.');
-        }
-      };
-    });
+        };
+      });
     /* function saveConte() {
           var Doc = $("#addDoc").val();  
           var Tco = $("#addTco").val();
