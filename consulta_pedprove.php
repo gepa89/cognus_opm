@@ -889,6 +889,50 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         allowDeleteColumn: true
     });
 });
+// Función para capturar los datos cargados en el jspreadsheet
+function saveConte() {
+    // Obtener los datos del spreadsheet
+    const data = spreadsheet.getData();
+
+    // Crear un array estructurado para manipular los datos con mayor facilidad
+    const structuredData = data.map(row => {
+        return {
+            tipoContenedor: row[0],
+            cantidad: row[1],
+            nroContenedor: row[2],
+            observacion: row[3]
+        };
+    });
+
+    // Mostrar los datos en la consola
+    console.log('Datos capturados:', structuredData);
+
+    // Enviar los datos al servidor a través de fetch
+    fetch('requests/saveDatConte.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            action: 'add',
+            table: 'datconteped',
+            fields: 'docompra,tipconte,numconte,canti,observacion',
+            data: structuredData
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        alert(result.msg);
+        if (result.err === 0) {
+            window.location = 'consulta_pedprove.php';
+        }
+    })
+    .catch(error => {
+        console.error('Error al guardar los datos:', error);
+        alert('Error al guardar los datos: ' + error.message);
+    });
+}
+
 /* function saveConte() {
       var Doc = $("#addDoc").val();  
       var Tco = $("#addTco").val();
@@ -926,8 +970,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         alert('Favor ingresar una descripción');
       }
     }*/
-    function saveConte() {
-    const data = jspreadsheet.getValue('spreadsheet');
+    /* function saveConte() {
+    const data = jspreadsheet.getData('spreadsheet');
     
     // Obtener los datos de las filas de la tabla
     
@@ -967,7 +1011,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         console.error('Error:', error);
         alert('Ocurrió un error.');
     });
-}
+} */
     function swModal(docompra) {
             let ped = docompra; 
         //    console.log(ped);
