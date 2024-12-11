@@ -881,8 +881,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         });
       }
     }
-
     let pedidoATratar = null;
+
     // Maneja los clics en los botones del dropdown dinámico
     $(document).on('click', '.dropdown-menu li a', function (event) {
       event.preventDefault(); // Evita el comportamiento por defecto del enlace
@@ -898,9 +898,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         console.error(`La acción "${action}" no está definida o no es una función.`);
       }
     });
+
     window.solicitadc = function (docompra) {
       console.log(`Solicitando DC para ${docompra}`);
-      // Lógica aquí
     };
 
     window.anularPedido = function (docompra) {
@@ -917,7 +917,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     window.cerrarPedido = function (docompra) {
       console.log(`Cerrando pedido para ${docompra}`);
 
-      let url = "/api/v1/cerrar_pedprove.php?docompra" + docompra;
+      let url = "/api/v1/cerrar_pedprove.php?docompra=" + docompra;
       let contenido = $("#cerrar-pedido").html();
       contenido = contenido.replace('__pedido__', docompra);
       contenido = contenido.replace('__url__', url);
@@ -938,18 +938,15 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.addData = function (docompra) {
       console.log(`Agregando container data para ${docompra}`);
-
       pedidoATratar = docompra;
 
       $("#addDat .modal-title").empty().append('Añadir ');
       $('#addDat').modal('show');
       $('#addDat input[name="addDoc"]').val(docompra);
-      // Lógica aquí
     };
 
     window.updUsr = function (addPue, addDes) {
-      console.log(`Editando container data para ${docompra}`);
-
+      console.log(`Editando container data para ${addPue}, ${addDes}`);
       $("#editUsr .modal-title").empty().append('Editar ');
       $("#updPue").val(addPue);
       $("#updDes").val(addDes);
@@ -962,10 +959,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
     window.modificarPedido = function (docompra) {
       console.log(`Modificando pedido para ${docompra}`);
-      // Lógica aquí
     };
-    document.addEventListener('DOMContentLoaded', function () {
 
+    document.addEventListener('DOMContentLoaded', function () {
       // Inicializar el componente de jspreadsheet
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
         data: [],
@@ -975,7 +971,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
           { type: 'text', title: 'Nro. Contenedor', width: 150 },
           { type: 'text', title: 'Observacion', width: 300 }
         ],
-        minDimensions: [4, 10], // Número mínimo de columnas y filas
+        minDimensions: [4, 10],
         allowInsertRow: true,
         allowInsertColumn: true,
         allowDeleteRow: true,
@@ -984,27 +980,21 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
       // Función para guardar los datos del jspreadsheet
       window.saveConte = function () {
-        debugger
         if (typeof spreadsheet !== 'undefined' && typeof spreadsheet.getData === 'function') {
-          // Obtener los datos del spreadsheet
           const data = spreadsheet.getData();
 
-          // Validar que haya un pedido asignado
           if (!pedidoATratar) {
             alert('No se ha seleccionado un pedido.');
             return;
           }
 
-          // Filtrar las filas que tengan todos los campos llenos
           const filteredData = data.filter(row => row.every(cell => cell !== null && cell !== ''));
 
-          // Validar que no esté vacío
           if (filteredData.length === 0) {
             alert('No hay filas completas en el spreadsheet para guardar.');
             return;
           }
 
-          // Crear un array estructurado para enviar al servidor
           const structuredData = filteredData.map(row => ({
             docompra: pedidoATratar,
             tipconte: row[0],
@@ -1013,12 +1003,9 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
             observacion: row[3]
           }));
 
-          // Enviar los datos al servidor
           fetch('requests/saveDatConte.php', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               action: 'add',
               table: 'datconteped',
@@ -1026,105 +1013,26 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               data: structuredData
             })
           })
-          .then(response => {
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-          })
-          .then(result => {
-            if (result && result.err === 0) {
-              alert(result.msg);
-              window.location = 'consulta_pedprove.php';
-            } else {
-              alert(result.msg || 'Error desconocido en el servidor');
-            }
-          })
-          .catch(error => {
-            console.error('Error al guardar los datos:', error);
-            alert('Error al guardar los datos: ' + error.message);
-          });
-
-        });
-    /* function saveConte() {
-          var Doc = $("#addDoc").val();  
-          var Tco = $("#addTco").val();
-          var Nco = $("#addNco").val();
-          var Can = $("#addCan").val();
-          var Obs = $("#addObs").val();
-          
-    
-          if (Doc != '') {
-            $.ajax({
-              type: 'POST',
-              url: 'requests/saveDatConte.php',
-              data: {
-                action: 'add',
-                Doc: Doc,
-                Tco: Tco,
-                Nco: Nco,
-                Can: Can,
-                Obs: Obs,
-              
-    
-                table: 'datconteped',
-                fields: 'docompra,tipconte,numconte,canti,observacion'
-              }, success: function (data) {
-                var dt = JSON.parse(data);
-                alert(dt.msg);
-                if (dt.err == 0) {
-                  window.location = 'consulta_pedprove.php';
-                }
-              }, error: function (request) {
-                alert(request.responseJSON.error);
+            .then(response => {
+              if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+              return response.json();
+            })
+            .then(result => {
+              if (result && result.err === 0) {
+                alert(result.msg);
+                window.location = 'consulta_pedprove.php';
+              } else {
+                alert(result.msg || 'Error desconocido en el servidor');
               }
+            })
+            .catch(error => {
+              console.error('Error al guardar los datos:', error);
+              alert('Error al guardar los datos: ' + error.message);
             });
-          } else {
-            alert('Favor ingresar una descripción');
-          }
-        }*/
-    /* function saveConte() {
-    const data = jspreadsheet.getData('spreadsheet');
-    
-    // Obtener los datos de las filas de la tabla
-    
-    let tipconte = data[1][1];  // Primera fila, segunda columna (Tipo Contenedor)
-    let canti = data[1][2];  // Primera fila, tercera columna (Cantidad)
-    let numconte = data[1][3];  // Primera fila, cuarta columna (Nro. Contenedor)
-    let observacion = data[1][4];  // Primera fila, quinta columna (Observacion)
-
-    // Validar los datos
-    if (!docompra || !tipconte || !canti || !numconte || !observacion) {
-        alert("Por favor complete todos los campos.");
-        return;
-    }
-    //conole.log (tipconte);
-    // Enviar los datos al servidor con AJAX o formularios
-    let formData = new FormData();
-   // formData.append('addDoc', docompra);
-    formData.append('addTco', tipconte);
-    formData.append('addCan', canti);
-    formData.append('addNco', numconte);
-    formData.append('addObs', observacion);
-
-    fetch ('saveDatConte.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Contenedor guardado exitosamente');
-            $('#addDat').modal('hide');  // Cerrar el modal
-        } else {
-            alert('Error al guardar el contenedor');
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Ocurrió un error.');
+      };
     });
-} */
+
     function swModal(docompra) {
       let ped = docompra;
       //    console.log(ped);
@@ -1369,6 +1277,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
         }
       });
     }
+
+    });
   </script>
 </body>
 
