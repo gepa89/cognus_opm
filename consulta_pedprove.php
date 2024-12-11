@@ -695,8 +695,13 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
      * @param {string} selector - Modal selector.
      */
     function openModal(title, selector) {
-      $(selector).find('.modal-title').text(title);
-      $(selector).modal('show');
+      const modal = $(selector);
+      if (!modal.length) {
+        console.error(`Modal not found for selector: ${selector}`);
+        return;
+      }
+      modal.find('.modal-title').text(title);
+      modal.modal('show');
     }
 
     /**
@@ -717,71 +722,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     }
 
     /**
-     * Handle details control click event to show/hide row details.
-     */
-    function handleDetailsControl() {
-      const table = $("#tblReg").DataTable({ retrieve: true });
-      const tr = $(this).closest('tr');
-      const row = table.row(tr);
-      const rowData = row.data();
-
-      if (row.child.isShown()) {
-        $(tr.find('td:first')[0]).toggleClass('details-open details-close');
-        row.child.hide();
-        tr.removeClass('shown');
-      } else {
-        $(tr.find('td:first')[0]).toggleClass('details-close details-open');
-        row.child("<div>Cargando Espere ...</div>").show();
-        tr.addClass('shown');
-
-        $.LoadingOverlay("show");
-        $.ajax({
-          url: `${BASE_URL}obtener_pedprove_detalle.php`,
-          data: { pedido: rowData.docompra },
-          dataType: 'json',
-          success: function (json) {
-            $.LoadingOverlay("hide");
-            generarTablaDetalles(rowData.pedido, json.detalles, row);
-          },
-          error: logAjaxError
-        });
-      }
-    }
-
-    /**
-     * Generate details table for a row.
-     * @param {string} pedido - Pedido identifier.
-     * @param {Array} datos - Data for the details.
-     * @param {Object} row - Row object.
-     */
-    function generarTablaDetalles(pedido, datos, row) {
-      const columnas = [
-        { data: 'posnr', title: 'Pos.', className: 'dt-body-center' },
-        { data: 'artrefer', title: 'Material', className: 'dt-body-center' },
-        { data: 'artdesc', title: 'Descripcion', className: 'dt-body-center' },
-        { data: 'unimed', title: 'UM', className: 'dt-body-center' },
-        { data: 'canti', title: 'Cant.Pedido', className: 'dt-body-center' },
-        { data: 'preuni', title: 'Precio', className: 'dt-body-center' },
-        { data: 'pretotal', title: 'Prec.Total', className: 'dt-body-center' },
-        { data: 'cencod', title: 'Centro', className: 'dt-body-center' },
-        { data: 'cod_alma', title: 'Almacen', className: 'dt-body-center' },
-        { data: 'volumen', title: 'Grup.Art.', className: 'dt-body-center' }
-      ];
-
-      row.child(`<table class="table table-bordered" style="width:100%" id='tabla-${pedido}'></table>`).show();
-      $(`#tabla-${pedido}`).DataTable({
-        language: { url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json' },
-        info: false,
-        ordering: false,
-        searching: false,
-        data: datos,
-        scrollX: true,
-        columns: columnas
-      });
-    }
-
-    /**
-     * Log AJAX errors to console.
+     * Log AJAX errors to the console.
      */
     function logAjaxError(xhr, error, thrown) {
       $.LoadingOverlay("hide");
@@ -789,8 +730,8 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     }
 
     /**
-     * Handle form submission for filtering data.
-     * @param {Event} event - Form submit event.
+     * Handle the filter form submission.
+     * @param {Event} event - Form submission event.
      */
     function handleFilterForm(event) {
       event.preventDefault();
@@ -799,7 +740,7 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
     }
 
     /**
-     * Initialize spreadsheet functionality.
+     * Initialize the spreadsheet functionality.
      */
     function initializeSpreadsheet() {
       const spreadsheet = jspreadsheet(document.getElementById('spreadsheet'), {
@@ -864,34 +805,6 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
       };
     }
 
-    /**
-     * Setup dynamic actions handling.
-     */
-    function setupDynamicActions() {
-      document.addEventListener('click', function (event) {
-        if (event.target && event.target.classList.contains('dynamic-action')) {
-          event.preventDefault();
-          const action = event.target.getAttribute('data-action');
-          const docompra = event.target.getAttribute('data-docompra');
-
-          switch (action) {
-            case 'addDat':
-              window.currentDocCompra = docompra;
-              openModal('Agregar Contenedor', '#add-container-modal');
-              break;
-            case 'solicitadc':
-              openModal(`Solicitar DC para ${docompra}`, '#solicitar-dc-modal');
-              break;
-            case 'anularPedido':
-              openModal(`Anular Pedido ${docompra}`, '#anular-pedido-modal');
-              break;
-            default:
-              console.error('Acción no reconocida:', action);
-          }
-        }
-      });
-
-    }
   </script>
 </body>
 
