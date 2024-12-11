@@ -1026,26 +1026,26 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
               data: structuredData
             })
           })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json();
-            })
-            .then(result => {
-              if (result && result.err === 0) {
-                alert(result.msg);
-                window.location = 'consulta_pedprove.php';
-              } else {
-                alert(result.msg || 'Error desconocido en el servidor');
-              }
-            })
-            .catch(error => {
-              console.error('Error al guardar los datos:', error);
-              alert('Error al guardar los datos: ' + error.message);
-            });
-        };
-      });
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(result => {
+            if (result && result.err === 0) {
+              alert(result.msg);
+              window.location = 'consulta_pedprove.php';
+            } else {
+              alert(result.msg || 'Error desconocido en el servidor');
+            }
+          })
+          .catch(error => {
+            console.error('Error al guardar los datos:', error);
+            alert('Error al guardar los datos: ' + error.message);
+          });
+
+        });
     /* function saveConte() {
           var Doc = $("#addDoc").val();  
           var Tco = $("#addTco").val();
