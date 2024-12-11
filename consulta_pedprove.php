@@ -910,11 +910,11 @@ $db = new mysqli($SERVER, $USER, $PASS, $DB);
 
           // Crear un array estructurado para enviar al servidor
           const structuredData = filteredData.map(row => ({
-            docompra: row[0],
-            tipconte: row[1],
-            numconte: row[2],
-            canti: row[3],
-            observacion: row[4]
+            docompra: $('#addDat input[name="addDoc"]').val();,
+            tipconte: row[0],
+            numconte: row[1],
+            canti: row[2],
+            observacion: row[3]
           }));
 
           // Enviar los datos al servidor
