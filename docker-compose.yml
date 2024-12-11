@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opm_php_app
+    volumes:
+      # Monta el código fuente de la aplicación
+      - ./:/var/www/html
+    networks:
+      - app_network
+    depends_on:
+      - nginx
+
+  nginx:
+    image: nginx:latest
+    container_name: opm_nginx_server
+    ports:
+      # Mapea el puerto 8085 en el host al puerto 80 del contenedor
+      - "8085:80"
+    volumes:
+      # Configuración personalizada de Nginx
+      - ./nginx:/etc/nginx/conf.d
+      # Monta el código fuente para servirlo
+      - ./:/var/www/html
+    networks:
+      - app_network
+
+networks:
+  app_network:
+

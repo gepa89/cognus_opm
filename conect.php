@@ -4,7 +4,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_WARNING & ~E_NOTICE);
 date_default_timezone_set('America/Asuncion');
 if(!isset($_SESSION)) { session_start(); } 
-$SERVER = '127.0.0.1';
+$SERVER = '193.203.175.72';
 $USER = 'u920596356_opm';
 $PASS = 'Guidagog2050.';
 $DB = 'u920596356_opm';

@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
 <?php include 'head.php' ?>
 
 <body>
-    <img style="width: 250px; display: block; margin: 6% auto -20%; position: relative;" src="img/logo.png" />
+    <!-- <img style="width: 250px; display: block; margin: 6% auto -20%; position: relative;" src="img/logo.png" /> -->
     <div class="login_box">
 
         <form method="post" id="login_form">
@@ -144,176 +144,161 @@ if (isset($_SESSION['user'])) {
     <script src="lib/validation/jquery.validate.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script>
-        function chkFlds() {
-            var name = $('input[name="field1"]').val();
-            var pass1 = $('input[name="field2"]').val();
-            var pass2 = $('input[name="field3"]').val();
-            var email = $('input[name="field4"]').val();
-
-            if (name != "") {
-                if (email != '') {
-                    var sp = email.split("@");
-                    if (pass1 != "" && pass2 != "") {
-                        if (pass1 == pass2) {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'sendUser.php',
-                                data: {
-                                    action: 'login',
-                                    pass: pass,
-                                    name: user
-                                }, success: function (data) {
-                                    var dt = JSON.parse(data);
-                                    if (dt.rt == 1) {
-                                        alert(dt.msg);
-                                        window.location = 'login.php';
-                                    } else {
-                                        alert('Bienvenido');
-                                    }
-                                }
-                            });
-                        } else {
-                            alert("Las contraseñas no coinciden.");
-                        }
-                    } else {
-                        alert("Debe ingresar una contraseña.");
-                    }
-                } else {
-                    alert("Debe ingresar una dirección de correo válida.");
-                }
-            } else {
-                alert("Favor ingresar Nombre de Usuario.");
-            }
-        }
         $(document).ready(function () {
+            // Cache form wrapper for reuse
+            var formWrapper = $('.login_box');
 
-            //* boxes animation
-            form_wrapper = $('.login_box');
-            function boxHeight() {
-                form_wrapper.animate({ marginTop: (- (form_wrapper.height() / 2) - 24) }, 400);
-            };
-            form_wrapper.css({ marginTop: (- (form_wrapper.height() / 2) - 24) });
-            $('.linkform a,.link_reg a').on('click', function (e) {
-                var target = $(this).attr('href'),
-                    target_height = $(target).actual('height');
-                $(form_wrapper).css({
-                    'height': form_wrapper.height()
-                });
-                $(form_wrapper.find('form:visible')).fadeOut(400, function () {
-                    form_wrapper.stop().animate({
-                        height: target_height,
-                        marginTop: (- (target_height / 2) - 24)
-                    }, 500, function () {
-                        $(target).fadeIn(400);
-                        $('.links_btm .linkform').toggle();
-                        $(form_wrapper).css({
-                            'height': ''
-                        });
-                    });
-                });
+            // Adjust box height dynamically
+            function adjustBoxHeight(height) {
+                formWrapper.stop().animate({
+                    marginTop: (-height / 2) - 24
+                }, 400);
+            }
+
+            // Initial box height adjustment
+            adjustBoxHeight(formWrapper.height());
+
+            // Form toggle logic
+            $('.linkform a, .link_reg a').on('click', function (e) {
                 e.preventDefault();
+                var target = $($(this).attr('href'));
+                var targetHeight = target.actual('height');
+
+                formWrapper.css('height', formWrapper.height());
+                formWrapper.find('form:visible').fadeOut(400, function () {
+                    formWrapper.animate({
+                        height: targetHeight,
+                        marginTop: (-targetHeight / 2) - 24
+                    }, 500, function () {
+                        target.fadeIn(400);
+                        $('.links_btm .linkform').toggle();
+                        formWrapper.css('height', '');
+                    });
+                });
             });
 
-            //* validation
-            $('#login_form').validate({
-                onkeyup: false,
-                errorClass: 'error',
-                validClass: 'valid',
-                rules: {
-                    username: { required: true, minlength: 3 },
-                    password: { required: true, minlength: 3 }
-                },
-                messages: {
-                    username: {
-                        required: 'Este campo es requerido',
-                        number: 'Favor ingresar un código válido'
+            // Validation rules
+            function setupValidation(formId, rules, messages, successCallback) {
+                $(formId).validate({
+                    onkeyup: false,
+                    errorClass: 'error',
+                    validClass: 'valid',
+                    rules: rules,
+                    messages: messages,
+                    highlight: function (element) {
+                        $(element).closest('.form-group').addClass("f_error");
+                        setTimeout(adjustBoxHeight.bind(null, formWrapper.height()), 200);
                     },
-                    password: {
-                        required: 'Este campo es requerido'
-                    }
-                },
-                highlight: function (element) {
-                    $(element).closest('.form-group').addClass("f_error");
-                    setTimeout(function () {
-                        boxHeight()
-                    }, 200)
-                },
-                unhighlight: function (element) {
-                    $(element).closest('.form-group').removeClass("f_error");
-                    setTimeout(function () {
-                        boxHeight()
-                    }, 200)
-                },
-                errorPlacement: function (error, element) {
-                    $(element).closest('.form-group').append(error);
-                },
-                submitHandler: function (form) {
-                    // do other things for a valid form
-                    $.ajax({
-                        url: 'sendUser.php',
-                        type: form.method,
-                        data: $(form).serialize(),
-                        success: function (response) {
-                            var dt = JSON.parse(response);
-                            if (dt.err == 0) {
-                                window.location.replace("dashboard.php?almacen=CD11");
-                            } else {
-                                alert(dt.msg);
-                            }
+                    unhighlight: function (element) {
+                        $(element).closest('.form-group').removeClass("f_error");
+                        setTimeout(adjustBoxHeight.bind(null, formWrapper.height()), 200);
+                    },
+                    errorPlacement: function (error, element) {
+                        $(element).closest('.form-group').append(error);
+                    },
+                    submitHandler: successCallback
+                });
+            }
 
-                        }, error: function (error) {
-                            console.log(error);
-                        }
-                    });
-                }
-            });
-            $('#pass_form').validate({
-                debug: true,
-                onkeyup: false,
-                errorClass: 'error',
-                validClass: 'valid',
-                rules: {
-                    email: { required: true, minlength: 3 }
+            // Setup validation for login form
+            setupValidation('#login_form', {
+                username: { required: true, minlength: 3 },
+                password: { required: true, minlength: 3 }
+            }, {
+                username: {
+                    required: 'Este campo es requerido',
+                    minlength: 'Debe tener al menos 3 caracteres'
                 },
-                messages: {
-                    email: {
-                        required: 'Este campo es requerido'
+                password: {
+                    required: 'Este campo es requerido',
+                    minlength: 'Debe tener al menos 3 caracteres'
+                }
+            }, function (form) {
+                $.ajax({
+                    url: 'sendUser.php',
+                    type: form.method,
+                    data: $(form).serialize(),
+                    success: function (response) {
+                        var dt = JSON.parse(response);
+                        if (dt.err === 0) {
+                            window.location.replace("dashboard.php?almacen=CD11");
+                        } else {
+                            alert(dt.msg);
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error during login:', error);
                     }
-                },
-                highlight: function (element) {
-                    $(element).closest('.form-group').addClass("f_error");
-                    setTimeout(function () {
-                        boxHeight()
-                    }, 200)
-                },
-                unhighlight: function (element) {
-                    $(element).closest('.form-group').removeClass("f_error");
-                    setTimeout(function () {
-                        boxHeight()
-                    }, 200)
-                },
-                errorPlacement: function (error, element) {
-                    $(element).closest('.form-group').append(error);
-                },
-                submitHandler: function (form) {
-                    // do other things for a valid form
-                    $.ajax({
-                        url: 'sendUser.php',
-                        type: form.method,
-                        data: $(form).serialize(),
-                        success: function (response) {
-                            var dt = JSON.parse(response);
-                            if (dt.err == 0) {
-                                alert(dt.msg);
-                                window.location.replace("login.php");
-                            } else {
-                                alert(dt.msg);
-                            }
-                        }
-                    });
-                }
+                });
             });
+
+            // Setup validation for password recovery form
+            setupValidation('#pass_form', {
+                email: { required: true, email: true }
+            }, {
+                email: {
+                    required: 'Este campo es requerido',
+                    email: 'Ingrese un correo electrónico válido'
+                }
+            }, function (form) {
+                $.ajax({
+                    url: 'sendUser.php',
+                    type: form.method,
+                    data: $(form).serialize(),
+                    success: function (response) {
+                        var dt = JSON.parse(response);
+                        if (dt.err === 0) {
+                            alert(dt.msg);
+                            window.location.replace("login.php");
+                        } else {
+                            alert(dt.msg);
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error during password recovery:', error);
+                    }
+                });
+            });
+
+            // Field validation for signup
+            function validateSignupFields() {
+                var name = $('input[name="field1"]').val();
+                var pass1 = $('input[name="field2"]').val();
+                var pass2 = $('input[name="field3"]').val();
+                var email = $('input[name="field4"]').val();
+
+                if (!name) return alert("Favor ingresar Nombre de Usuario.");
+                if (!email.includes('@')) return alert("Debe ingresar una dirección de correo válida.");
+                if (!pass1 || !pass2) return alert("Debe ingresar una contraseña.");
+                if (pass1 !== pass2) return alert("Las contraseñas no coinciden.");
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'sendUser.php',
+                    data: {
+                        action: 'login',
+                        pass: pass1,
+                        name: name
+                    },
+                    success: function (data) {
+                        var dt = JSON.parse(data);
+                        if (dt.rt === 1) {
+                            alert(dt.msg);
+                            window.location = 'login.php';
+                        } else {
+                            alert('Bienvenido');
+                        }
+                    },
+                    error: function (error) {
+                        console.error('Error during signup:', error);
+                    }
+                });
+            }
+
+            // Attach signup validation
+            $('#signup_btn').on('click', validateSignupFields);
         });
+
     </script>
 </body>
 

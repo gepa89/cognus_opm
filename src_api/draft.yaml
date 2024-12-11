@@ -1,0 +1,2315 @@
+tables:
+  ajuart:
+    columns:
+      - name: numdoc
+        type: int(10) unsigned
+        primary_key: true
+        auto_increment: true
+      - name: posicion
+        type: int(11)
+        nullable: true
+      - name: ubirefer
+        type: varchar(255)
+        nullable: true
+      - name: artrefer
+        type: varchar(255)
+        nullable: true
+      - name: stock
+        type: decimal(12,3)
+        nullable: true
+      - name: canajuscaj
+        type: decimal(12,3)
+        nullable: true
+      - name: canajusun
+        type: decimal(12,3)
+        nullable: true
+      - name: ajuref
+        type: varchar(255)
+        nullable: true
+      - name: movref
+        type: varchar(255)
+        nullable: true
+      - name: fecha
+        type: date
+        nullable: true
+      - name: hora
+        type: time
+        nullable: true
+      - name: usuario
+        type: varchar(255)
+        nullable: true
+      - name: almrefer
+        type: varchar(10)
+        nullable: true
+      - name: cliente
+        type: varchar(10)
+        nullable: true
+    indexes:
+      - name: idx_posicion
+        columns:
+          - posicion
+      - name: idx_artrefer
+        columns:
+          - artrefer
+      - name: idx_ubirefer
+        columns:
+          - ubirefer
+
+  ajutip:
+    columns:
+      - name: ajuref
+        type: varchar(20)
+        primary_key: true
+      - name: ajudes
+        type: varchar(255)
+        nullable: true
+      - name: ajumov
+        type: varchar(10)
+        nullable: true
+    indexes:
+      - name: idx_ajuref
+        columns:
+          - ajuref
+      - name: idx_ajuref_mov
+        columns:
+          - ajuref
+          - ajumov
+
+  alerta_sistema:
+    columns:
+      - name: id
+        type: bigint(20)
+        primary_key: true
+        auto_increment: true
+      - name: mensaje
+        type: text
+        nullable: false
+      - name: correo_enviado
+        type: tinyint(1)
+        default: 0
+      - name: destinatarios
+        type: text
+        nullable: true
+      - name: tipo
+        type: varchar(100)
+        nullable: false
+      - name: fecha_envio
+        type: datetime
+        nullable: true
+      - name: fecha_creacion
+        type: datetime
+        nullable: true
+      - name: reintentos
+        type: int(11)
+        nullable: true
+
+  alma:
+    columns:
+      - name: almcod
+        type: varchar(4)
+        primary_key: true
+      - name: almdes
+        type: varchar(40)
+        nullable: false
+      - name: cencod
+        type: varchar(4)
+        nullable: false
+    indexes:
+      - name: idx_almcod
+        columns:
+          - almcod
+      - name: idx_cencod
+        columns:
+          - cencod
+
+  anul_asignaciones:
+    columns:
+      - name: id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tercod
+        type: varchar(255)
+        nullable: true
+      - name: pedido
+        type: varchar(255)
+        nullable: true
+      - name: fecha
+        type: date
+        nullable: true
+      - name: hora
+        type: time
+        nullable: true
+      - name: usuario
+        type: varchar(255)
+        nullable: true
+      - name: cod_alma
+        type: varchar(10)
+        nullable: true
+
+  aranceles:
+    columns:
+      - name: artrefer
+        type: varchar(50)
+        primary_key: true
+      - name: artdesc
+        type: varchar(255)
+        nullable: true
+      - name: arancel
+        type: decimal(10,3)
+        nullable: true
+      - name: referencia
+        type: varchar(255)
+        nullable: true
+      - name: fecmodi
+        type: date
+        nullable: true
+      - name: hormodi
+        type: time
+        nullable: true
+      - name: usuario
+        type: varchar(50)
+        nullable: true
+      - name: arante
+        type: decimal(10,3)
+        nullable: true
+      - name: fecre
+        type: datetime
+        nullable: true
+      - name: usermodi
+        type: varchar(50)
+        nullable: true
+
+  artmov:
+    columns:
+      - name: codmov
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: movref
+        type: varchar(255)
+        nullable: true
+      - name: movdes
+        type: varchar(255)
+        nullable: true
+      - name: ensal
+        type: varchar(10)
+        nullable: true
+      - name: descsen
+        type: varchar(255)
+        nullable: true
+      - name: pedclase
+        type: varchar(255)
+        nullable: true
+      - name: movref1
+        type: varchar(255)
+        nullable: true
+  artubiref:
+    columns:
+      - name: ubirefer
+        type: varchar(255)
+        nullable: true
+      - name: artrefer
+        type: varchar(255)
+        nullable: true
+      - name: ubitipo
+        type: varchar(255)
+        nullable: true
+      - name: cod_alma
+        type: varchar(4)
+        nullable: true
+      - name: refid
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: ubilibre
+        type: tinyint(1)
+        default: 0
+      - name: capacidad
+        type: int(11)
+        nullable: true
+    indexes:
+      - name: idx_ubirefer
+        columns:
+          - ubirefer
+      - name: idx_artrefer
+        columns:
+          - artrefer
+      - name: idx_ubi_art_alm
+        columns:
+          - ubirefer
+          - artrefer
+          - cod_alma
+
+  asignacion_trabajo_libre:
+    columns:
+      - name: id
+        type: bigint(20)
+        primary_key: true
+        auto_increment: true
+      - name: ubicacion_origen
+        type: varchar(100)
+        nullable: false
+      - name: codigo_articulo
+        type: varchar(100)
+        nullable: false
+      - name: ubicacion_destino
+        type: varchar(100)
+        nullable: true
+      - name: estado
+        type: varchar(100)
+        nullable: false
+      - name: usuario
+        type: varchar(100)
+        nullable: false
+      - name: fecha_creacion
+        type: datetime
+        nullable: false
+      - name: cantidad
+        type: double
+        nullable: false
+      - name: fecha_finalizacion
+        type: datetime
+        nullable: true
+      - name: terminal
+        type: varchar(10)
+        nullable: false
+  invenpic:
+    columns:
+      - name: invdocin
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+        comment: Documento interno de inventario
+      - name: invedoc
+        type: bigint(20)
+        primary_key: true
+        comment: Codigo de Inventario
+      - name: ubirefer
+        type: varchar(255)
+        nullable: true
+        comment: Ubicacion del inventario
+      - name: artrefer
+        type: varchar(18)
+        nullable: true
+        comment: Articulo
+      - name: canubic
+        type: decimal(12,3)
+        nullable: true
+      - name: canfisi
+        type: decimal(12,3)
+        nullable: true
+      - name: operef
+        type: char(8)
+        nullable: true
+        comment: Usuario que Realiza el Inventario
+      - name: fecinvepic
+        type: date
+        nullable: true
+        comment: Fecha Inventario
+      - name: horinvepic
+        type: time
+        nullable: true
+        comment: Hora Inventario
+      - name: invetipo
+        type: varchar(255)
+        nullable: true
+      - name: diferencia
+        type: int(11)
+        nullable: true
+
+  invetip:
+    columns:
+      - name: invetipo
+        type: varchar(255)
+        primary_key: true
+      - name: invedestip
+        type: varchar(255)
+        nullable: true
+  pedcab:
+    columns:
+      - name: id_pedcab
+        type: tinyint(4)
+        primary_key: true
+      - name: sociedad
+        type: varchar(10)
+        nullable: true
+      - name: anio
+        type: date
+        nullable: true
+      - name: interno
+        type: varchar(10)
+        nullable: true
+      - name: pedcontra
+        type: varchar(10)
+        nullable: true
+      - name: pedoc
+        type: varchar(10)
+        nullable: true
+      - name: numembar
+        type: varchar(255)
+        nullable: true
+      - name: numprofor
+        type: varchar(255)
+        nullable: true
+      - name: imporprof
+        type: decimal(10,3)
+        nullable: true
+      - name: monprof
+        type: decimal(10,3)
+        nullable: true
+      - name: numinvoice
+        type: int(11)
+        nullable: true
+      - name: imporinv
+        type: decimal(10,3)
+        nullable: true
+      - name: moninv
+        type: varchar(255)
+        nullable: true
+      - name: imporanti
+        type: decimal(10,3)
+        nullable: true
+      - name: imporcance
+        type: decimal(10,3)
+        nullable: true
+      - name: coduser
+        type: varchar(10)
+        nullable: true
+      - name: fecped
+        type: date
+        nullable: true
+      - name: horped
+        type: time
+        nullable: true
+      - name: condpago
+        type: varchar(255)
+        nullable: true
+      - name: codprove
+        type: varchar(255)
+        nullable: true
+      - name: codfabrica
+        type: varchar(255)
+        nullable: true
+      - name: orgcompra
+        type: varchar(255)
+        nullable: true
+      - name: grupcompra
+        type: varchar(255)
+        nullable: true
+      - name: incote
+        type: varchar(255)
+        nullable: true
+      - name: codespa
+        type: varchar(255)
+        nullable: true
+      - name: sector
+        type: varchar(255)
+        nullable: true
+      - name: desimpor
+        type: varchar(255)
+        nullable: true
+
+  pedinvedet:
+    columns:
+      - name: pedinve
+        type: varchar(255)
+        nullable: false
+      - name: posdoc
+        type: int(11)
+        nullable: false
+      - name: artrefer
+        type: varchar(255)
+        nullable: false
+      - name: artdesc
+        type: varchar(255)
+        nullable: true
+      - name: canubi1
+        type: int(11)
+        nullable: true
+      - name: canfisi1
+        type: int(11)
+        nullable: true
+      - name: diferencia1
+        type: int(11)
+        nullable: true
+      - name: fecontrol1
+        type: date
+        nullable: true
+      - name: horcontrol1
+        type: time
+        nullable: true
+      - name: usuario1
+        type: varchar(255)
+        nullable: true
+      - name: canubi2
+        type: int(11)
+        nullable: true
+      - name: canfisi2
+        type: int(11)
+        nullable: true
+      - name: diferencia2
+        type: int(11)
+        nullable: true
+      - name: fecontrol2
+        type: date
+        nullable: true
+      - name: horcontrol2
+        type: time
+        nullable: true
+      - name: usuario2
+        type: varchar(255)
+        nullable: true
+      - name: canubi3
+        type: int(11)
+        nullable: true
+      - name: canfisi3
+        type: int(11)
+        nullable: true
+      - name: diferencia3
+        type: int(11)
+        nullable: true
+      - name: fecontrol3
+        type: date
+        nullable: true
+      - name: horcontrol3
+        type: time
+        nullable: true
+      - name: usuario3
+        type: varchar(255)
+        nullable: true
+      - name: expst1
+        type: tinyint(1)
+        default: 0
+      - name: ubirefer
+        type: varchar(255)
+        nullable: false
+      - name: ubitipo
+        type: varchar(255)
+        nullable: true
+      - name: expst2
+        type: tinyint(1)
+        default: 0
+      - name: expst3
+        type: tinyint(1)
+        default: 0
+      - name: termi1
+        type: varchar(255)
+        nullable: true
+      - name: termi2
+        type: varchar(255)
+        nullable: true
+      - name: termi3
+        type: varchar(255)
+        nullable: true
+    primary_key:
+      - pedinve
+      - posdoc
+      - artrefer
+      - ubirefer
+
+  pedmuelle:
+    columns:
+      - name: pedid
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pedrefer
+        type: varchar(255)
+        nullable: true
+      - name: muelle
+        type: varchar(255)
+        nullable: true
+      - name: pets
+        type: varchar(255)
+        nullable: true
+      - name: pedstatus
+        type: int(11)
+        default: 0
+      - name: cod_alma
+        type: varchar(4)
+        nullable: true
+    indexes:
+      - name: idx_pedrefer
+        columns:
+          - pedrefer
+
+  pedpre:
+    columns:
+      - name: numped
+        type: int(11)
+        nullable: false
+        comment: 'Numero de Entrega'
+      - name: ERDAT
+        type: date
+        nullable: false
+        comment: 'Fecha Creacion Entrega'
+      - name: VKORG
+        type: varchar(4)
+        nullable: false
+        comment: 'Organizacion de Ventas'
+      - name: LFIMG
+        type: varchar(10)
+        nullable: false
+        comment: 'Cantidad Entrega'
+      - name: MATNR
+        type: varchar(18)
+        nullable: false
+        comment: 'Codigo Material'
+      - name: ARKTX
+        type: varchar(50)
+        nullable: false
+        comment: 'Descripcion Material'
+      - name: LGPBE
+        type: varchar(12)
+        nullable: false
+        comment: 'Ubicacion Material'
+      - name: VGBEL
+        type: varchar(12)
+        nullable: false
+        comment: 'Pedido de Ventas'
+      - name: RFMNG
+        type: int(11)
+        nullable: false
+        comment: 'Cantidad Preparada'
+      - name: codusu
+        type: varchar(10)
+        nullable: false
+        comment: 'Codigo Usuario'
+      - name: fecpre
+        type: date
+        nullable: false
+        comment: 'Fecha Preparacion'
+      - name: tipdoc
+        type: varchar(10)
+        nullable: false
+        comment: 'Tipo Documento'
+      - name: pedsitu
+        type: varchar(10)
+        nullable: false
+        comment: 'Situacion del Pedido'
+      - name: WERKS
+        type: varchar(4)
+        nullable: false
+        comment: 'Centro'
+      - name: lgort
+        type: varchar(4)
+        nullable: false
+        comment: 'Almacen'
+      - name: VSTEL
+        type: varchar(4)
+        nullable: false
+        comment: 'Puesto Expedicion'
+      - name: KUNAG
+        type: int(11)
+        nullable: false
+        comment: 'Codigo Cliente'
+    primary_key:
+      - numped
+    indexes:
+      - name: VKORG_MATNR_VGBEL
+        columns:
+          - VKORG
+          - MATNR
+          - VGBEL
+      - name: WERKS_lgort_VSTEL
+        columns:
+          - WERKS
+          - lgort
+          - VSTEL
+    comment: 'Pedidos asignados al Preparador'
+  usuarios:
+    columns:
+      - name: pr_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pr_user
+        type: varchar(255)
+        unique: true
+      - name: pr_nombre
+        type: varchar(255)
+        nullable: true
+      - name: pr_apellido
+        type: varchar(255)
+        nullable: true
+      - name: pr_pass
+        type: varchar(255)
+        nullable: true
+      - name: pr_rol
+        type: varchar(255)
+        nullable: true
+      - name: pr_ts
+        type: timestamp
+        nullable: true
+      - name: pr_email
+        type: varchar(255)
+        nullable: true
+      - name: clirefer
+        type: varchar(255)
+        nullable: true
+
+  usuario_roles:
+    columns:
+      - name: id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: id_usuario
+        type: int(11)
+        nullable: false
+      - name: id_rol
+        type: int(11)
+        nullable: false
+    constraints:
+      - name: usuario_roles_fk
+        foreign_key: id_rol
+        references:
+          table: roles
+          column: id
+      - name: usuario_roles_fk_1
+        foreign_key: id_usuario
+        references:
+          table: usuarios
+          column: pr_id
+
+  users:
+    columns:
+      - name: id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: name
+        type: varchar(255)
+        nullable: false
+      - name: email
+        type: varchar(255)
+        unique: true
+      - name: email_verified_at
+        type: timestamp
+        nullable: true
+      - name: password
+        type: varchar(255)
+        nullable: false
+      - name: remember_token
+        type: varchar(100)
+        nullable: true
+      - name: created_at
+        type: timestamp
+        nullable: true
+      - name: updated_at
+        type: timestamp
+        nullable: true
+
+  version_apk:
+    columns:
+      - name: version
+        type: int(11)
+        primary_key: true
+  ubica:
+    columns:
+      - name: ubid
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: ubcod
+        type: varchar(255)
+        nullable: true
+      - name: cod_alma
+        type: varchar(4)
+        nullable: true
+      - name: ubest
+        type: varchar(255)
+        nullable: true
+      - name: ubdes
+        type: varchar(255)
+        nullable: true
+      - name: ubhas
+        type: varchar(255)
+        nullable: true
+      - name: ubniv
+        type: varchar(255)
+        nullable: true
+      - name: ubts
+        type: timestamp
+        nullable: true
+      - name: ubusr
+        type: int(11)
+        nullable: true
+
+  ubizonas:
+    columns:
+      - name: zoncodpre
+        type: varchar(50)
+        primary_key: true
+      - name: totubi
+        type: int(11)
+        nullable: true
+      - name: prioridad
+        type: int(11)
+        nullable: true
+
+  ubimapa:
+    columns:
+      - name: ubicod
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cod_alma
+        type: varchar(4)
+        nullable: true
+      - name: ubiestan
+        type: varchar(255)
+        nullable: true
+      - name: ubihuec
+        type: varchar(255)
+        nullable: true
+      - name: ubiniv
+        type: int(11)
+        nullable: true
+      - name: zoncodpre
+        type: varchar(255)
+        nullable: true
+      - name: zoncodalm
+        type: varchar(255)
+        nullable: true
+      - name: ubitipo
+        type: varchar(255)
+        nullable: true
+      - name: ubiestad
+        type: varchar(255)
+        nullable: true
+      - name: ubisitu
+        type: varchar(255)
+        nullable: true
+      - name: ubirefer
+        type: varchar(255)
+        nullable: true
+      - name: fecrea
+        type: timestamp
+        nullable: true
+      - name: almrefer
+        type: varchar(255)
+        nullable: true
+      - name: ubihash
+        type: varchar(255)
+        nullable: true
+      - name: tipoubi
+        type: varchar(255)
+        nullable: true
+      - name: dimension
+        type: varchar(255)
+        nullable: true
+
+  ubitempo:
+    columns:
+      - name: ubirefer
+        type: varchar(255)
+        primary_key: true
+      - name: cod_alma
+        type: varchar(4)
+        primary_key: true
+      - name: fecha
+        type: datetime
+        nullable: true
+      - name: multiref
+        type: varchar(255)
+        nullable: true
+      - name: tercod
+        type: varchar(4)
+        nullable: true
+      - name: pedido
+        type: varchar(18)
+        nullable: true
+      - name: artrefer
+        type: varchar(255)
+        nullable: true
+      - name: estado_ubicacion
+        type: tinyint(1)
+        nullable: true
+  inventario:
+    columns:
+      - name: inv_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: inv_codigo
+        type: varchar(255)
+        nullable: false
+      - name: inv_descripcion
+        type: text
+        nullable: true
+      - name: inv_fecha
+        type: date
+        nullable: false
+      - name: inv_hora
+        type: time
+        nullable: true
+      - name: inv_usuario
+        type: varchar(255)
+        nullable: false
+      - name: inv_estado
+        type: tinyint(1)
+        default: 0
+      - name: inv_observacion
+        type: text
+        nullable: true
+
+  stock_diario:
+    columns:
+      - name: id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: artrefer
+        type: varchar(18)
+        nullable: true
+      - name: artdesc
+        type: varchar(255)
+        nullable: true
+      - name: ubirefer
+        type: varchar(18)
+        nullable: true
+      - name: totalarti
+        type: decimal(12,3)
+        nullable: true
+      - name: totalubi
+        type: decimal(12,2)
+        nullable: true
+      - name: fecha
+        type: date
+        nullable: true
+      - name: hora
+        type: time
+        nullable: true
+      - name: cod_alma
+        type: varchar(10)
+        nullable: true
+      - name: ubitipo
+        type: varchar(10)
+        nullable: true
+
+  stockart:
+    columns:
+      - name: stotid
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cod_alma
+        type: varchar(4)
+        nullable: false
+      - name: artrefer
+        type: varchar(255)
+        nullable: false
+      - name: candispo
+        type: decimal(12,3)
+        default: 0.000
+
+  loteart:
+    columns:
+      - name: artlote
+        type: varchar(10)
+        primary_key: true
+      - name: artrefer
+        type: varchar(255)
+        primary_key: true
+      - name: cod_alma
+        type: varchar(4)
+        primary_key: true
+      - name: fecaduc
+        type: date
+        nullable: true
+      - name: fecinspe
+        type: date
+        nullable: true
+      - name: fecre
+        type: date
+        nullable: true
+  transport:
+    columns:
+      - name: codtransport
+        type: varchar(50)
+        primary_key: true
+      - name: nombre
+        type: varchar(255)
+        nullable: true
+
+  condipagos:
+    columns:
+      - name: condpago
+        type: varchar(50)
+        primary_key: true
+      - name: descripcion
+        type: varchar(255)
+        nullable: true
+
+  documentos:
+    columns:
+      - name: id
+        type: bigint(20)
+        primary_key: true
+        auto_increment: true
+      - name: doccompra
+        type: varchar(255)
+        nullable: true
+      - name: file_path
+        type: varchar(255)
+        nullable: true
+      - name: created_at
+        type: timestamp
+        nullable: true
+        default: current_timestamp
+
+  pagos:
+    columns:
+      - name: pago_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: referencia
+        type: varchar(255)
+        nullable: false
+      - name: monto
+        type: decimal(10,2)
+        nullable: false
+      - name: moneda
+        type: varchar(10)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: estado
+        type: tinyint(1)
+        default: 0
+      - name: observacion
+        type: text
+        nullable: true
+
+  tesoreria:
+    columns:
+      - name: tes_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tes_nombre
+        type: varchar(255)
+        nullable: true
+      - name: tes_tipo
+        type: varchar(50)
+        nullable: false
+      - name: tes_fecha
+        type: date
+        nullable: false
+      - name: tes_monto
+        type: decimal(12,2)
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+  config:
+    columns:
+      - name: id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: asig
+        type: int(11)
+        nullable: true
+      - name: ruta
+        type: varchar(255)
+        nullable: true
+      - name: lectura
+        type: varchar(255)
+        nullable: true
+      - name: cod_alma
+        type: varchar(4)
+        nullable: false
+      - name: estaparam
+        type: int(11)
+        nullable: true
+      - name: usuario
+        type: varchar(255)
+        nullable: true
+      - name: estaparanterior
+        type: int(11)
+        nullable: true
+      - name: estaparnuevo
+        type: int(11)
+        nullable: true
+      - name: fecha
+        type: date
+        nullable: true
+      - name: hora
+        type: time
+        nullable: true
+
+  parametros:
+    columns:
+      - name: id_param
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: codparam
+        type: varchar(255)
+        nullable: true
+      - name: desparam
+        type: varchar(255)
+        nullable: true
+      - name: estaparam
+        type: tinyint(1)
+        nullable: true
+
+  versiones:
+    columns:
+      - name: version_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: version_num
+        type: varchar(50)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: fecha_creacion
+        type: datetime
+        nullable: false
+      - name: usuario_creador
+        type: varchar(255)
+        nullable: false
+  logs:
+    columns:
+      - name: log_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tipo_log
+        type: varchar(50)
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: false
+
+  auditoria:
+    columns:
+      - name: aud_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tabla_afectada
+        type: varchar(255)
+        nullable: false
+      - name: accion
+        type: varchar(50)
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: detalles
+        type: text
+        nullable: true
+  almacenes:
+    columns:
+      - name: alm_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: codigo
+        type: varchar(10)
+        nullable: false
+      - name: descripcion
+        type: varchar(255)
+        nullable: true
+      - name: ubicacion
+        type: varchar(255)
+        nullable: true
+      - name: capacidad
+        type: int(11)
+        nullable: true
+
+  ubicaciones:
+    columns:
+      - name: ubi_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: codigo
+        type: varchar(10)
+        nullable: false
+      - name: descripcion
+        type: varchar(255)
+        nullable: true
+      - name: alm_id
+        type: int(11)
+        nullable: false
+        foreign_key: almacenes.alm_id
+      - name: estado
+        type: varchar(50)
+        nullable: true
+
+  movimientos:
+    columns:
+      - name: mov_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tipo_movimiento
+        type: varchar(50)
+        nullable: false
+      - name: alm_origen
+        type: int(11)
+        nullable: true
+        foreign_key: almacenes.alm_id
+      - name: alm_destino
+        type: int(11)
+        nullable: true
+        foreign_key: almacenes.alm_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: observaciones
+        type: text
+        nullable: true
+        
+  clientes:
+    columns:
+      - name: cliente_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: direccion
+        type: varchar(255)
+        nullable: true
+      - name: telefono
+        type: varchar(15)
+        nullable: true
+      - name: correo
+        type: varchar(255)
+        nullable: true
+      - name: estado
+        type: varchar(50)
+        nullable: true
+
+  pedidos:
+    columns:
+      - name: pedido_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cliente_id
+        type: int(11)
+        nullable: false
+        foreign_key: clientes.cliente_id
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+      - name: total
+        type: decimal(12,2)
+        nullable: false
+      - name: observaciones
+        type: text
+        nullable: true
+
+  detalle_pedidos:
+    columns:
+      - name: detalle_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pedido_id
+        type: int(11)
+        nullable: false
+        foreign_key: pedidos.pedido_id
+      - name: articulo_id
+        type: int(11)
+        nullable: false
+        foreign_key: articulos.articulo_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: precio_unitario
+        type: decimal(12,2)
+        nullable: false
+      - name: total
+        type: decimal(12,2)
+        nullable: false
+  empleados:
+    columns:
+      - name: emp_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: apellido
+        type: varchar(255)
+        nullable: false
+      - name: puesto
+        type: varchar(255)
+        nullable: true
+      - name: salario
+        type: decimal(10,2)
+        nullable: true
+      - name: fecha_contratacion
+        type: date
+        nullable: true
+      - name: estado
+        type: varchar(50)
+        nullable: true
+
+  cuentas_bancarias:
+    columns:
+      - name: cuenta_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: banco
+        type: varchar(255)
+        nullable: false
+      - name: numero_cuenta
+        type: varchar(50)
+        nullable: false
+      - name: tipo_cuenta
+        type: varchar(50)
+        nullable: false
+      - name: saldo
+        type: decimal(12,2)
+        nullable: false
+      - name: moneda
+        type: varchar(10)
+        nullable: false
+
+  transacciones:
+    columns:
+      - name: transaccion_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cuenta_id
+        type: int(11)
+        nullable: false
+        foreign_key: cuentas_bancarias.cuenta_id
+      - name: tipo_transaccion
+        type: varchar(50)
+        nullable: false
+      - name: monto
+        type: decimal(12,2)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+
+  facturas:
+    columns:
+      - name: factura_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cliente_id
+        type: int(11)
+        nullable: false
+        foreign_key: clientes.cliente_id
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: total
+        type: decimal(12,2)
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+      - name: observaciones
+        type: text
+        nullable: true
+
+  detalle_facturas:
+    columns:
+      - name: detalle_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: factura_id
+        type: int(11)
+        nullable: false
+        foreign_key: facturas.factura_id
+      - name: articulo_id
+        type: int(11)
+        nullable: false
+        foreign_key: articulos.articulo_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: precio_unitario
+        type: decimal(12,2)
+        nullable: false
+      - name: total
+        type: decimal(12,2)
+        nullable: false
+  
+  
+  auditoria_eventos:
+    columns:
+      - name: evento_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: tipo_evento
+        type: varchar(50)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: false
+
+  auditoria_accesos:
+    columns:
+      - name: acceso_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario
+        type: varchar(255)
+        nullable: false
+      - name: ip
+        type: varchar(50)
+        nullable: false
+      - name: dispositivo
+        type: varchar(255)
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: exito
+        type: boolean
+        nullable: false
+  configuraciones:
+    columns:
+      - name: config_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: clave
+        type: varchar(255)
+        nullable: false
+      - name: valor
+        type: text
+        nullable: true
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: usuario
+        type: varchar(255)
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: true
+  rutas:
+    columns:
+      - name: ruta_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: distancia
+        type: decimal(12,3)
+        nullable: true
+      - name: tiempo_estimado
+        type: time
+        nullable: true
+
+  paradas:
+    columns:
+      - name: parada_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: ruta_id
+        type: int(11)
+        nullable: false
+        foreign_key: rutas.ruta_id
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: coordenadas
+        type: varchar(255)
+        nullable: true
+      - name: orden
+        type: int(11)
+        nullable: false
+
+  transportistas:
+    columns:
+      - name: transportista_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: tipo_vehiculo
+        type: varchar(255)
+        nullable: true
+      - name: capacidad
+        type: decimal(12,3)
+        nullable: true
+      - name: estado
+        type: varchar(50)
+        nullable: true
+
+  asignaciones_logisticas:
+    columns:
+      - name: asignacion_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: transportista_id
+        type: int(11)
+        nullable: false
+        foreign_key: transportistas.transportista_id
+      - name: ruta_id
+        type: int(11)
+        nullable: false
+        foreign_key: rutas.ruta_id
+      - name: fecha_asignacion
+        type: datetime
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+  
+  roles:
+    columns:
+      - name: rol_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+
+  permisos:
+    columns:
+      - name: permiso_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+
+  empleados_roles:
+    columns:
+      - name: empleado_id
+        type: int(11)
+        nullable: false
+        foreign_key: empleados.empleado_id
+      - name: rol_id
+        type: int(11)
+        nullable: false
+        foreign_key: roles.rol_id
+    primary_key:
+      - empleado_id
+      - rol_id
+
+  roles_permisos:
+    columns:
+      - name: rol_id
+        type: int(11)
+        nullable: false
+        foreign_key: roles.rol_id
+      - name: permiso_id
+        type: int(11)
+        nullable: false
+        foreign_key: permisos.permiso_id
+    primary_key:
+      - rol_id
+      - permiso_id
+  
+
+  movimientos_inventarios:
+    columns:
+      - name: movimiento_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: inventario_id
+        type: int(11)
+        nullable: false
+        foreign_key: inventarios.inventario_id
+      - name: articulo_id
+        type: int(11)
+        nullable: false
+        foreign_key: articulos.articulo_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: tipo_movimiento
+        type: varchar(50)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: usuario
+        type: varchar(255)
+        nullable: true
+  notificaciones:
+    columns:
+      - name: notificacion_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.usuario_id
+      - name: mensaje
+        type: text
+        nullable: false
+      - name: tipo
+        type: varchar(50)
+        nullable: false
+      - name: fecha_envio
+        type: datetime
+        nullable: false
+      - name: leido
+        type: boolean
+        nullable: false
+        default: false
+  ventas:
+    columns:
+      - name: venta_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: cliente_id
+        type: int(11)
+        nullable: false
+        foreign_key: clientes.cliente_id
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: total
+        type: decimal(12,3)
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+
+  detalles_ventas:
+    columns:
+      - name: detalle_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: venta_id
+        type: int(11)
+        nullable: false
+        foreign_key: ventas.venta_id
+      - name: producto_id
+        type: int(11)
+        nullable: false
+        foreign_key: productos.producto_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: precio_unitario
+        type: decimal(12,3)
+        nullable: false
+      - name: subtotal
+        type: decimal(12,3)
+        nullable: false
+  compras:
+    columns:
+      - name: compra_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: proveedor_id
+        type: int(11)
+        nullable: false
+        foreign_key: proveedores.proveedor_id
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: total
+        type: decimal(12,3)
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+
+  detalles_compras:
+    columns:
+      - name: detalle_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: compra_id
+        type: int(11)
+        nullable: false
+        foreign_key: compras.compra_id
+      - name: producto_id
+        type: int(11)
+        nullable: false
+        foreign_key: productos.producto_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: precio_unitario
+        type: decimal(12,3)
+        nullable: false
+      - name: subtotal
+        type: decimal(12,3)
+        nullable: false
+  
+  proveedores:
+    columns:
+      - name: proveedor_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: documento
+        type: varchar(50)
+        nullable: false
+      - name: correo
+        type: varchar(255)
+        nullable: true
+      - name: telefono
+        type: varchar(50)
+        nullable: true
+      - name: direccion
+        type: varchar(255)
+        nullable: true
+      - name: fecha_registro
+        type: datetime
+        nullable: false
+      - name: estado
+        type: varchar(50)
+        nullable: false
+  productos:
+    columns:
+      - name: producto_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: precio
+        type: decimal(12,3)
+        nullable: false
+      - name: stock
+        type: decimal(12,3)
+        nullable: false
+      - name: categoria_id
+        type: int(11)
+        nullable: false
+        foreign_key: categorias.categoria_id
+      - name: estado
+        type: varchar(50)
+        nullable: false
+
+  categorias:
+    columns:
+      - name: categoria_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: nombre
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+  inventarios:
+    columns:
+      - name: inventario_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: producto_id
+        type: int(11)
+        nullable: false
+        foreign_key: productos.producto_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: tipo_movimiento
+        type: varchar(50)
+        nullable: false
+        comment: 'Entrada o Salida'
+
+  ajustes_inventario:
+    columns:
+      - name: ajuste_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: inventario_id
+        type: int(11)
+        nullable: false
+        foreign_key: inventarios.inventario_id
+      - name: cantidad_ajustada
+        type: decimal(12,3)
+        nullable: false
+      - name: motivo
+        type: varchar(255)
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+  
+
+  detalles_pedidos:
+    columns:
+      - name: detalle_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pedido_id
+        type: int(11)
+        nullable: false
+        foreign_key: pedidos.pedido_id
+      - name: producto_id
+        type: int(11)
+        nullable: false
+        foreign_key: productos.producto_id
+      - name: cantidad
+        type: decimal(12,3)
+        nullable: false
+      - name: precio_unitario
+        type: decimal(12,3)
+        nullable: false
+      - name: subtotal
+        type: decimal(12,3)
+        nullable: false
+  
+  envios:
+    columns:
+      - name: envio_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pedido_id
+        type: int(11)
+        nullable: false
+        foreign_key: pedidos.pedido_id
+      - name: direccion_envio
+        type: text
+        nullable: false
+      - name: estado_envio
+        type: varchar(50)
+        nullable: false
+      - name: fecha_envio
+        type: datetime
+        nullable: true
+      - name: fecha_entrega
+        type: datetime
+        nullable: true
+  
+  devoluciones:
+    columns:
+      - name: devolucion_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: pedido_id
+        type: int(11)
+        nullable: false
+        foreign_key: pedidos.pedido_id
+      - name: producto_id
+        type: int(11)
+        nullable: false
+        foreign_key: productos.producto_id
+      - name: cantidad
+        type: int(11)
+        nullable: false
+      - name: motivo
+        type: text
+        nullable: true
+      - name: estado
+        type: varchar(50)
+        nullable: false
+      - name: fecha_devolucion
+        type: datetime
+        nullable: false
+  reportes:
+    columns:
+      - name: reporte_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: titulo
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: fecha_creacion
+        type: datetime
+        nullable: false
+      - name: tipo_reporte
+        type: varchar(50)
+        nullable: false
+  auditorias:
+    columns:
+      - name: auditoria_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: accion
+        type: varchar(255)
+        nullable: false
+      - name: tabla_afectada
+        type: varchar(255)
+        nullable: false
+      - name: registro_afectado
+        type: int(11)
+        nullable: true
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: false
+  
+  estadisticas:
+    columns:
+      - name: estadistica_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: tipo
+        type: varchar(255)
+        nullable: false
+      - name: valor
+        type: text
+        nullable: true
+      - name: fecha
+        type: datetime
+        nullable: false
+  mensajes:
+    columns:
+      - name: mensaje_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: emisor_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: receptor_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: contenido
+        type: text
+        nullable: false
+      - name: fecha
+        type: datetime
+        nullable: false
+  tareas:
+    columns:
+      - name: tarea_id
+        type: int(11)
+        primary_key: true
+        auto_increment: true
+      - name: usuario_id
+        type: int(11)
+        nullable: false
+        foreign_key: usuarios.id
+      - name: titulo
+        type: varchar(255)
+        nullable: false
+      - name: descripcion
+        type: text
+        nullable: true
+      - name: estado
+        type: varchar(50)
+        nullable: false
+      - name: fecha_creacion
+        type: datetime
+        nullable: false
+      - name: fecha_finalizacion
+        type: datetime
+        nullable: true
+pedrecab:
+  columns:
+    pedcod: {type: int(11), auto_increment: true, nullable: false}
+    pedrefer: {type: varchar(15), nullable: false}
+    pedrentre: {type: int(11), nullable: true}
+    codprove: {type: varchar(12), nullable: false}
+    pedclase: {type: varchar(4), nullable: false}
+    almrefer: {type: varchar(4), nullable: false}
+    pedrefec: {type: date, nullable: false}
+    pedrefeclle: {type: date, nullable: false}
+    pedrehor: {type: time, nullable: false}
+    pedrehorlle: {type: time, nullable: false}
+    pedresitu: {type: varchar(2), nullable: false}
+    pedrecie: {type: date, nullable: true}
+    pedrehorcie: {type: time, nullable: true}
+    pedrerack: {type: varchar(12), nullable: true}
+    nomprove: {type: varchar(40), nullable: true}
+    pedalemi: {type: varchar(4), nullable: true}
+    pedsent: {type: int(11), default: 0}
+    movref: {type: varchar(255), nullable: true}
+    ensal: {type: varchar(10), nullable: true}
+    obse1: {type: varchar(255), nullable: true}
+    fecmod: {type: date, nullable: true}
+    hormod: {type: time, nullable: true}
+    codmone: {type: varchar(50), nullable: true}
+    orgcompra: {type: varchar(50), nullable: true}
+    codsocie: {type: varchar(50), nullable: true}
+  primary_key: [pedcod, pedrefer]
+  indexes:
+    idx_pedrefer: [pedrefer]
+    idx_ped_mov_ensal: [pedrefer, movref, ensal]
+  comment: 'Pedidos Recepcion Cabecera'
+
+pedpre:
+  columns:
+    numped: {type: int(11), nullable: false, comment: 'Numero de Entrega'}
+    ERDAT: {type: date, nullable: false, comment: 'Fecha Creacion Entrega'}
+    VKORG: {type: varchar(4), nullable: false, comment: 'Organizacion de Ventas'}
+    LFIMG: {type: varchar(10), nullable: false, comment: 'Cantidad Entrega'}
+    MATNR: {type: varchar(18), nullable: false, comment: 'Codigo Material'}
+    ARKTX: {type: varchar(50), nullable: false, comment: 'Descripcion Material'}
+    LGPBE: {type: varchar(12), nullable: false, comment: 'Ubicacion Material'}
+    VGBEL: {type: varchar(12), nullable: false, comment: 'Pedido de Ventas'}
+    RFMNG: {type: int(11), nullable: false, comment: 'Cantidad Preparada'}
+    codusu: {type: varchar(10), nullable: false, comment: 'Codigo Usuario'}
+    fecpre: {type: date, nullable: false, comment: 'Fecha Preparacion'}
+    tipdoc: {type: varchar(10), nullable: false, comment: 'Tipo Documento'}
+    pedsitu: {type: varchar(10), nullable: false, comment: 'Situacion del Pedido'}
+    WERKS: {type: varchar(4), nullable: false, comment: 'Centro'}
+    lgort: {type: varchar(4), nullable: false, comment: 'Almacen'}
+    VSTEL: {type: varchar(4), nullable: false, comment: 'Puesto Expedicion'}
+    KUNAG: {type: int(11), nullable: false, comment: 'Codigo Cliente'}
+  primary_key: [numped]
+  indexes:
+    VKORG_MATNR_VGBEL: [VKORG, MATNR, VGBEL]
+    WERKS_lgort_VSTEL: [WERKS, lgort, VSTEL]
+  comment: 'Pedidos asignados al Preparador'
+
+pedmuelle:
+  columns:
+    pedid: {type: int(11), auto_increment: true, nullable: false}
+    pedrefer: {type: varchar(255), nullable: true}
+    muelle: {type: varchar(255), nullable: true}
+    pets: {type: varchar(255), nullable: true}
+    pedstatus: {type: int(11), default: 0}
+    cod_alma: {type: varchar(4), nullable: true}
+  primary_key: [pedid]
+  indexes:
+    idx_pedrefer: [pedrefer]
+
+pedinvedet:
+  columns:
+    pedinve: {type: varchar(255), nullable: false}
+    posdoc: {type: int(11), nullable: false}
+    artrefer: {type: varchar(255), nullable: false}
+    artdesc: {type: varchar(255), nullable: true}
+    canubi1: {type: int(11), nullable: true}
+    canfisi1: {type: int(11), nullable: true}
+    diferencia1: {type: int(11), nullable: true}
+    fecontrol1: {type: date, nullable: true}
+    horcontrol1: {type: time, nullable: true}
+    usuario1: {type: varchar(255), nullable: true}
+    canubi2: {type: int(11), nullable: true}
+    canfisi2: {type: int(11), nullable: true}
+    diferencia2: {type: int(11), nullable: true}
+    fecontrol2: {type: date, nullable: true}
+    horcontrol2: {type: time, nullable: true}
+    usuario2: {type: varchar(255), nullable: true}
+    canubi3: {type: int(11), nullable: true}
+    canfisi3: {type: int(11), nullable: true}
+    diferencia3: {type: int(11), nullable: true}
+    fecontrol3: {type: date, nullable: true}
+    horcontrol3: {type: time, nullable: true}
+    usuario3: {type: varchar(255), nullable: true}
+    expst1: {type: tinyint(1), default: 0}
+    ubirefer: {type: varchar(255), nullable: false}
+    ubitipo: {type: varchar(255), nullable: true}
+    expst2: {type: tinyint(1), default: 0}
+    expst3: {type: tinyint(1), default: 0}
+    termi1: {type: varchar(255), nullable: true}
+    termi2: {type: varchar(255), nullable: true}
+    termi3: {type: varchar(255), nullable: true}
+  primary_key: [pedinve, posdoc, artrefer, ubirefer]
+pedmultiref:
+  columns:
+    terminal: {type: varchar(255), primary_key: true}
+    pedido: {type: varchar(255), primary_key: true}
+    multiref: {type: varchar(255), nullable: true}
+    codst: {type: int(11), default: 0}
+    mrts: {type: timestamp, nullable: true}
+    mrtscls: {type: timestamp, nullable: true}
+    cod_alma: {type: varchar(4), primary_key: true}
+    pedcajas: {type: int(11), primary_key: true, default: 0}
+    zona: {type: varchar(10), primary_key: true}
+
+password_reset_tokens:
+  columns:
+    email: {type: varchar(255), primary_key: true}
+    token: {type: varchar(255), nullable: false}
+    created_at: {type: timestamp, nullable: true}
+
+
+log_registro_ean:
+  columns:
+    ing_ean: {type: varchar(255), nullable: true}
+    ing_mat: {type: varchar(255), nullable: true}
+    ing_user: {type: varchar(255), nullable: true}
+    ing_ts: {type: date, nullable: true}
+
+log_ct:
+  columns:
+    lg_id: {type: int(11), primary_key: true, auto_increment: true}
+    lg_pd: {type: varchar(255), nullable: true}
+    lg_mat: {type: varchar(255), nullable: true}
+    lg_ean: {type: varchar(255), nullable: true}
+    lg_cant: {type: varchar(255), nullable: true}
+    lg_user: {type: varchar(255), nullable: true}
+    lg_ts: {type: timestamp, nullable: true}
+invetip:
+  columns:
+    invetipo: {type: varchar(255), primary_key: true}
+    invedestip: {type: varchar(255), nullable: true}
+
+invenpic:
+  columns:
+    invdocin: {type: int(11), primary_key: true, auto_increment: true, comment: 'Documento interno de inventario'}
+    invedoc: {type: bigint(20), primary_key: true, comment: 'Código de Inventario'}
+    ubirefer: {type: varchar(255), nullable: true, comment: 'Ubicación del inventario'}
+    artrefer: {type: varchar(18), nullable: true, comment: 'Artículo'}
+    canubic: {type: decimal(12,3), nullable: true}
+    canfisi: {type: decimal(12,3), nullable: true}
+    operef: {type: char(8), nullable: true, comment: 'Usuario que realiza el inventario'}
+    fecinvepic: {type: date, nullable: true, comment: 'Fecha Inventario'}
+    horinvepic: {type: time, nullable: true, comment: 'Hora Inventario'}
+    invetipo: {type: varchar(255), nullable: true}
+    diferencia: {type: int(11), nullable: true}
+
+job_history:
+  columns:
+    sc_script: {type: varchar(255), nullable: true}
+    sc_ts: {type: timestamp, nullable: true}
+
+dimens:
+  columns:
+    dimension: {type: varchar(10), primary_key: true}
+    dimdesc: {type: varchar(255), nullable: true}
+    capacidad: {type: int(11), nullable: true, comment: 'Este campo no se usa'}
+    fecaut: {type: date, nullable: true}
+    codalma: {type: varchar(255), nullable: true}
+
+diasmezcla:
+  columns:
+    artrefer: {type: varchar(255), primary_key: true}
+    mezotroprod: {type: varchar(2), nullable: true, comment: 'Permite mezclar con otros productos'}
+    candias: {type: varchar(2), nullable: true}
+    mezmisprod: {type: varchar(2), nullable: true, comment: 'Permite mezclar con el mismo producto otro lote'}
+    codalma: {type: varchar(255), nullable: true}
+    fecaut: {type: date, nullable: true}
+
+despachantes:
+  columns:
+    codespa: {type: varchar(50), primary_key: true}
+    nombre: {type: varchar(255), nullable: true}
+    usuario: {type: varchar(255), nullable: true}
+    usermod: {type: varchar(255), nullable: true}
+    fecre: {type: date, nullable: true}
+    horcre: {type: time, nullable: true}
+    fecmod: {type: date, nullable: true}
+    hormod: {type: time, nullable: true}
+
+depositos:
+  columns:
+    codepos: {type: varchar(10), primary_key: true}
+    nombre: {type: varchar(255), nullable: true}
+
+datembar:
+  columns:
+    sociedad: {type: varchar(10), primary_key: true}
+    anio: {type: date, nullable: true}
+    interno: {type: varchar(50), nullable: true}
+    pedcontra: {type: varchar(50), nullable: true}
+    pedoc: {type: varchar(50), nullable: true}
+    numembar: {type: varchar(50), nullable: true}
+    tipembar: {type: varchar(50), nullable: true}
+    fecped: {type: date, nullable: true}
+    horped: {type: time, nullable: true}
+    coduser: {type: varchar(50), nullable: true}
+    fecproblleg: {type: date, nullable: true}
+    fecprobemb: {type: date, nullable: true}
+    codforwar: {type: varchar(50), nullable: true}
+    fecestiemb: {type: date, nullable: true}
+    numbl: {type: varchar(50), nullable: true}
+    canconte: {type: decimal(10,3), nullable: true}
+    mecub: {type: decimal(10,3), nullable: true}
+    canbul: {type: decimal(10,3), nullable: true}
+    tipbul: {type: varchar(50), nullable: true}
+    fecemb: {type: date, nullable: true}
+    codbuqmar: {type: varchar(50), nullable: true}
+    codpuerem: {type: varchar(50), nullable: true}
+    codinconte: {type: varchar(50), nullable: true}
+    codpuertrans: {type: varchar(50), nullable: true}
+    fecllepuer: {type: date, nullable: true}
+    fecsalpuer: {type: date, nullable: true}
+direc:
+  columns:
+    dircod: {type: int(11), primary_key: true}
+    direfer: {type: varchar(255), nullable: true}
+    calle1: {type: varchar(255), nullable: true}
+    calle2: {type: varchar(255), nullable: true}
+    numero: {type: varchar(255), nullable: true}
+    cord1: {type: varchar(255), nullable: true}
+    cod2: {type: varchar(255), nullable: true}
+    clirefer: {type: varchar(255), nullable: true}
+
+documentos:
+  columns:
+    id: {type: bigint(20), primary_key: true, auto_increment: true}
+    doccompra: {type: varchar(255), nullable: true}
+    file_path: {type: varchar(255), nullable: true}
+    created_at: {type: timestamp, nullable: true, default: current_timestamp}
+
+loteart:
+  columns:
+    artlote: {type: varchar(10), primary_key: true}
+    artrefer: {type: varchar(255), primary_key: true}
+    fecaduc: {type: date, nullable: true}
+    fecinspe: {type: date, nullable: true}
+    cod_alma: {type: varchar(4), primary_key: true}
+    fecre: {type: date, nullable: true}
+
+maestros:
+  columns:
+    grupo_art: {type: varchar(255), nullable: true}
+    j1: {type: varchar(255), nullable: true}
+    j2: {type: varchar(255), nullable: true}
+    j3: {type: varchar(255), nullable: true}
+    material: {type: varchar(255), nullable: true}
+    mate_ant: {type: varchar(255), nullable: true}
+    descripcion_com: {type: varchar(255), nullable: true}
+    denominador: {type: varchar(255), nullable: true}
+    item_est: {type: varchar(255), nullable: true}
+    deposito: {type: varchar(255), nullable: true}
+    lote: {type: varchar(255), nullable: true}
+    volumen: {type: varchar(255), nullable: true}
+    largo: {type: varchar(255), nullable: true}
+    ancho: {type: varchar(255), nullable: true}
+    peso_neto: {type: varchar(255), nullable: true}
+    ean13: {type: varchar(255), nullable: true}
+    unidad_base: {type: varchar(255), nullable: true}
+    marca: {type: varchar(255), nullable: true}
+    origen: {type: varchar(255), nullable: true}
+    proveedor: {type: varchar(255), nullable: true}
+
+material_log:
+  columns:
+    mat_id: {type: int(11), primary_key: true, auto_increment: true}
+    mat_cod: {type: varchar(255), nullable: true}
+    mat_cant: {type: int(11), nullable: true}
+    mat_doc: {type: varchar(255), nullable: true}
+    mat_usu: {type: varchar(255), nullable: true}
+    mat_comment: {type: varchar(255), nullable: true}
+    mat_ts: {type: timestamp, nullable: true}
+
+parametros:
+  columns:
+    id_param: {type: int(11), primary_key: true, auto_increment: true}
+    codparam: {type: varchar(255), nullable: true}
+    desparam: {type: varchar(255), nullable: true}
+    estaparam: {type: tinyint(1), nullable: true}
+
+ped_multiref:
+  columns:
+    terminal: {type: varchar(255), primary_key: true}
+    pedido: {type: varchar(255), primary_key: true}
+    multiref: {type: varchar(255), nullable: true}
+    codst: {type: int(11), default: 0}
+    mrts: {type: timestamp, nullable: true}
+    mrtscls: {type: timestamp, nullable: true}
+    cod_alma: {type: varchar(4), primary_key: true}
+    pedcajas: {type: int(11), primary_key: true, default: 0}
+    zona: {type: varchar(10), primary_key: true}
+
+
+zgcompras:
+  columns:
+    usuario: {type: varchar(255), primary_key: true}
+    grupo_compras: {type: varchar(255), nullable: true}
+    departamento: {type: varchar(255), nullable: true}
+    correo: {type: varchar(255), nullable: true}
+    jefe: {type: varchar(255), nullable: true}
+    id: {type: tinyint(4), auto_increment: true}

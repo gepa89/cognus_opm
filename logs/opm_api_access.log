@@ -1,0 +1,8 @@
+172.19.0.1 - - [11/Dec/2024:13:51:47 +0000] "GET / HTTP/1.1" 500 1071468 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:13:51:48 +0000] "GET /favicon.ico HTTP/1.1" 200 296 "http://opm_api.local:8085/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:13:51:58 +0000] "GET /login HTTP/1.1" 500 1028707 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:13:52:02 +0000] "GET /login.php HTTP/1.1" 500 1028715 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:13:53:16 +0000] "GET /login.php HTTP/1.1" 404 6895 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:13:53:20 +0000] "GET / HTTP/1.1" 200 8143 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+172.19.0.1 - - [11/Dec/2024:14:00:19 +0000] "GET /opm_api/ HTTP/1.1" 200 8144 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0"
+172.19.0.1 - - [11/Dec/2024:14:00:29 +0000] "GET /loign.php HTTP/1.1" 404 490 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0"
