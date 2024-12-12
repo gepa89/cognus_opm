@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Usa una imagen base de PHP con FPM
 FROM php:8.1-fpm
 
@@ -46,3 +47,40 @@ EXPOSE 9003
 # Establecer el directorio de trabajo
 WORKDIR /var/www/html
 
+=======
+# Usar una imagen base oficial de PHP con FPM
+FROM php:8.1-fpm
+
+# Actualizar paquetes e instalar herramientas necesarias
+RUN apt-get update && apt-get install -y \
+    git \
+    vim \
+    curl \
+    zip \
+    unzip \
+    libpq-dev \
+    libzip-dev \
+    libonig-dev \
+    && docker-php-ext-install pdo_mysql mbstring zip \
+    && apt-get clean
+
+# Instalar Composer
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
+
+# Establecer directorio de trabajo
+WORKDIR /var/www/html
+
+# Copiar archivos de la aplicación
+COPY . .
+
+# Configurar permisos
+RUN chown -R www-data:www-data /var/www/html
+
+# Exponer el puerto
+EXPOSE 9000
+
+# Comando por defecto
+CMD ["php-fpm"]
+
+>>>>>>> 9d65d9a (instalacion de laravel en app_api)
